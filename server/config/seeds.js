@@ -11,7 +11,7 @@ db.once('open', async () => {
             title: 'Leaves Falling Off Daily',
             plantType: 'Fiddle Leaf Fig',
             description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-            picture: 'picture',
+            picture: 'https://res.cloudinary.com/dk53zrwwe/image/upload/v1651630945/Plants/fiddleleaffig_b2otqh.jpg',
             username: 'Betty',
             comments: [
                 {
@@ -28,7 +28,7 @@ db.once('open', async () => {
             title: 'Yellow Leaves',
             plantType: 'Spider Plant',
             description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-            picture: 'picture',
+            picture: 'https://res.cloudinary.com/dk53zrwwe/image/upload/v1651630946/Plants/spiderplant_eoiulz.jpg',
             username: 'Betty',
             comments: [
                 {
@@ -42,7 +42,7 @@ db.once('open', async () => {
             title: 'Shriveled Leaves',
             plantType: 'Rattlesnake Plant',
             description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-            picture: 'picture',
+            picture: 'https://res.cloudinary.com/dk53zrwwe/image/upload/v1651630946/Plants/rattlesnackplant_mbrnbx.webp',
             username: 'Scott',
             comments: [
                 {

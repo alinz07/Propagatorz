@@ -86,7 +86,7 @@ const resolvers = {
             if (context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
                     { _id: postId },
-                    { $push: { comments: { commentBody } } },
+                    { $push: { comments: { commentBody, username: context.user.username } } },
                     { new: true }
                 );
 

@@ -28,11 +28,6 @@ type Comment {
     createdAt: String
 }
 
-type Auth {
-    token: ID!
-    user: User
-}
-
 type Query {
     me: User
     users: [User]
@@ -46,6 +41,11 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(title: String!, plantType: String!, description: String!, picture: String!): Post
     addComment(postId: ID! commentBody: String!): Post
+}
+
+type Auth {
+    token: ID!
+    user: User
 }
 
 `;

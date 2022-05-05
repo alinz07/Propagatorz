@@ -1,6 +1,7 @@
-const { User, Post } = require("../models");
-const { AuthenticationError } = require("apollo-server-express");
-// const { signToken } = require('../utils/auth');
+
+const { User, Post } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -25,6 +26,7 @@ const resolvers = {
             return User.findOne({ username })
                 .select("-password")
                 .populate("posts");
+
         },
         // get all posts with option to get all posts by username
         posts: async (parent, { username }) => {
@@ -45,12 +47,12 @@ const resolvers = {
             return { token, user };
         },
         // log in user
-        login: async (parent, args) => {
-            const user = await User.findOne(args.email);
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError("Incorrect credentials");
             }
-            const correctPw = await user.isCorrectPassword(args.password);
+            const correctPw = await user.isCorrectPassword({ password });
 
             if (!correctPw) {
                 throw new AuthenticationError("Incorrect credentials");
@@ -80,11 +82,11 @@ const resolvers = {
             throw new AuthenticationError("You need to be logged in.");
         },
         // create new comment
-        addComment: async (parent, args, context) => {
+        addComment: async (parent, { postId, commentBody }, context) => {
             if (context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
-                    { _id: args.postId },
-                    { $push: { comments: args.commentBody } },
+                    { _id: postId },
+                    { $push: { comments: { commentBody, username: context.user.username } } },
                     { new: true }
                 );
 

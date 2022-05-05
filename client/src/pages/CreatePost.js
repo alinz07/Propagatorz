@@ -7,7 +7,7 @@ const CreatePost = () => {
     const [imageSelected, setImageSelected] = useState("");
 
     const [formState, setFormState] = useState({ title: '', plantType: '', description: '', picture: '' })
-    const { title, plantType, description, picture } = formState;
+    // const { title, plantType, description, picture } = formState;
 
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -27,28 +27,27 @@ const CreatePost = () => {
         }
     }
 
-    // // upload image to cloudinary and set state
-    // const uploadImage = () => {
-    //     console.log(imageSelected)
-    //     const formData = new FormData()
-    //     formData.append('file', imageSelected)
-    //     formData.append("upload_preset", "g7iqwrdf")
+    // upload image to cloudinary and set state
+    const uploadImage = () => {
+        console.log(imageSelected)
+        const formData = new FormData()
+        formData.append('file', imageSelected)
+        formData.append("upload_preset", "g7iqwrdf")
 
-    //     fetch("https://api.cloudinary.com/v1_1/dk53zrwwe/image/upload", {
-    //         method: 'post',
-    //         body: formData
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             // console.log(data)
-    //             // console.log(data.secure_url)
-    //             const cloudinaryUrl = data.secure_url
-    //             setFormState({ ...formState, picture: cloudinaryUrl })
-    //             // https://res.cloudinary.com/dk53zrwwe/image/upload/v1651765921/zev4hoz70dj6lefs0rom.png
-    //         })
-    // };
-
-
+        fetch("https://api.cloudinary.com/v1_1/dk53zrwwe/image/upload", {
+            method: 'post',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data)
+                console.log(data.secure_url)
+                const cloudinaryUrl = data.secure_url // https://res.cloudinary.com/dk53zrwwe/image/upload/v1651765921/zev4hoz70dj6lefs0rom.png
+                setFormState({ ...formState, picture: cloudinaryUrl })
+                console.log(formState)
+            })
+        console.log(formState)
+    };
 
     // const [addPost, { error }] = useMutation(ADD_POST, {
     //     update(cache, { data: { addPost } }) {
@@ -68,36 +67,18 @@ const CreatePost = () => {
         e.preventDefault();
 
         // upload image to cloudinary and set state
-        console.log(imageSelected)
-        const formData = new FormData()
-        formData.append('file', imageSelected)
-        formData.append("upload_preset", "g7iqwrdf")
+        uploadImage()
 
-        fetch("https://api.cloudinary.com/v1_1/dk53zrwwe/image/upload", {
-            method: 'post',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                // console.log(data)
-                // console.log(data.secure_url)
-                const cloudinaryUrl = data.secure_url
-                setFormState({ ...formState, picture: { cloudinaryUrl } })
-                // https://res.cloudinary.com/dk53zrwwe/image/upload/v1651765921/zev4hoz70dj6lefs0rom.png
-                console.log(title, plantType, description, picture)
-                console.log(formState)
-            })
-
-        try {
-            // add post to database
-            // await addPost({
-            //     variables: { formState }
-            // });
-            setFormState('');
-            console.log(formState)
-        } catch (e) {
-            console.error(e);
-        }
+        // try {
+        //     // add post to database
+        //     // await addPost({
+        //     //     variables: { formState }
+        //     // });
+        //     setFormState('');
+        //     console.log(formState)
+        // } catch (e) {
+        //     console.error(e);
+        // }
     }
 
     return (

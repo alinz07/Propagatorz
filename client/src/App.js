@@ -1,12 +1,7 @@
 import React from "react";
-<<<<<<< HEAD
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-=======
 import Nav from '../src/components/Nav'
 import Footer from "./components/Footer";
-//import Footer from "./components/Footer";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
->>>>>>> ec4e19241873b8a78022b0551bd87796eae71d20
 // import {
 //     ApolloClient,
 //     InMemoryCache,

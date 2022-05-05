@@ -56,7 +56,7 @@ function App() {
                         </Switch>
             {/* <Footer /> */}
             {/* </StoreProvider> */}
-            <Footer/>
+            {/* <Footer/> */}
         
         </div>
             </Router>

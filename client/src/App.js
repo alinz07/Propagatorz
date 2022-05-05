@@ -56,6 +56,8 @@ function App() {
                         </Switch>
             {/* <Footer /> */}
             {/* </StoreProvider> */}
+            <Footer/>
+        
         </div>
             </Router>
         </ApolloProvider>

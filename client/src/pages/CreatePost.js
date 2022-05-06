@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { useMutation } from '@apollo/client';
 // import { ADD_POST } from '../utils/mutations';
 
@@ -11,7 +11,15 @@ const CreatePost = () => {
         description: "",
         picture: "",
     });
-    // const { title, plantType, description, picture } = formState;
+    const { picture } = formState;
+
+    useEffect(() => {
+        if (!picture) {
+            return;
+        } else {
+            console.log(formState);
+        }
+    }, [picture, formState]);
 
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -39,7 +47,7 @@ const CreatePost = () => {
 
     // upload image to cloudinary and set state
     const uploadImage = () => {
-        console.log(imageSelected);
+        // console.log(imageSelected);
         const formData = new FormData();
         formData.append("file", imageSelected);
         formData.append("upload_preset", "g7iqwrdf");
@@ -53,7 +61,7 @@ const CreatePost = () => {
                 // console.log(data)
                 // console.log(data.secure_url)
                 const cloudinaryUrl = data.secure_url; // https://res.cloudinary.com/dk53zrwwe/image/upload/v1651765921/zev4hoz70dj6lefs0rom.png
-                console.log(cloudinaryUrl);
+                // console.log(cloudinaryUrl);
                 setFormState({ ...formState, picture: cloudinaryUrl });
                 // return cloudinaryUrl = data.secure_url
             });

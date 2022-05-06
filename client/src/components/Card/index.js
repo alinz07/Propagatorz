@@ -1,13 +1,13 @@
 import React from "react";
-import { Grid, Tooltip } from "@mui/material";
+import { Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import LinkIcon from "@mui/icons-material/Link";
 import { useStoreContext } from "../../utils/globalState";
+// import LinkIcon from "@mui/icons-material/Link";
 
-function Card() {
-    const [state, dispatch] = useStoreContext();
+function PostCard(Postdata) {
+    const [state] = useStoreContext();
 
     const { posts } = state;
 
@@ -18,9 +18,9 @@ function Card() {
                     <Card width={400} id="react-card">
                         <CardMedia
                             component="img"
-                            alt={project.alt}
+                            alt={post.alt}
                             height="200"
-                            image={require(`../../assets/homepages/${post.picture}`)}
+                            // image={require(`../../assets/homepages/${post.picture}`)}
                         />
                         <CardContent>
                             <Grid container alignItems="center">
@@ -132,4 +132,4 @@ function Card() {
     );
 }
 
-export default Card;
+export default PostCard;

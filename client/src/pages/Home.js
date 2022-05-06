@@ -1,11 +1,11 @@
-import { Card } from "@mui/material";
+// import { CardList } from "../components/CardList";
 import React from "react";
-// import Nav from "../components/Nav";
 
 const Home = () => {
     return (
-        <div className="container">
-            <Card />
+        <div className="cardlist-container">
+            hello
+            {/* <CardList /> */}
         </div>
     );
 };

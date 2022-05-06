@@ -1,12 +1,7 @@
 import React from "react";
-<<<<<<< HEAD
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-=======
-import Nav from '../src/components/Nav'
+import Nav from "../src/components/Nav";
 import Footer from "./components/Footer";
-//import Footer from "./components/Footer";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
->>>>>>> ec4e19241873b8a78022b0551bd87796eae71d20
 // import {
 //     ApolloClient,
 //     InMemoryCache,
@@ -18,11 +13,8 @@ import Footer from "./components/Footer";
 
 // import SinglePost from "./pages/SinglePost";
 // import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-
-// import Footer from "./components/Footer";
-// import Nav from "./components/Nav";
+// import Login from "./pages/Login";
+// import Signup from "./pages/Signup";
 
 // const httpLink = createHttpLink({
 //     uri: "/graphql",
@@ -50,7 +42,7 @@ function App() {
         <div>
             {/* <StoreProvider> */}
             {}
-            <Nav/>
+            <Nav />
             {/* <Switch>
                             <Route exact path="/" component={Home} />
                             <Route exact path="/login" component={Login} />
@@ -63,8 +55,7 @@ function App() {
                             <Route component={NoMatch} />
                         </Switch> */}
             {/* </StoreProvider> */}
-            <Footer/>
-        
+            <Footer />
         </div>
 
         //     </Router>

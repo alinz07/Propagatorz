@@ -1,9 +1,8 @@
 import React from "react";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Nav from '../src/components/Nav'
+import Nav from "../src/components/Nav";
 import Footer from "./components/Footer";
 import CreatePost from "./pages/CreatePost";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import {
 //     ApolloClient,
 //     InMemoryCache,
@@ -43,7 +42,7 @@ function App() {
         //     <Router>
         <div>
             {/* <StoreProvider> */}
-            { }
+            {}
             <Nav />
             {/* <Switch>
                             <Route exact path="/" component={Home} />

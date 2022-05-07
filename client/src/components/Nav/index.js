@@ -2,11 +2,11 @@ import React from 'react';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
+import {useNavigate} from 'react-router-dom'
 
 
-
-function Nav() {
-  
+function Nav({ currentPage }) {
+  const navigate = useNavigate();
     function showNavigation() {
         if (Auth.loggedIn()) {
           return (
@@ -34,19 +34,19 @@ function Nav() {
           );
         } else {
           return (
-            <ul className="flex-row">
-              <li className="mx-1">
-                <Link to="/Signup">
-                  Signup
-                </Link> 
-              </li>
-              <li className="mx-1">
-                <Link to="/Login">
-                  Login
-                </Link>
-              </li>
-              
-            </ul>
+            <ul className="nav nav-tabs">
+      <li className="nav-item">
+        <a
+         
+          onClick={() => navigate('/login')}
+  
+
+          className={currentPage === 'login' ? 'nav-link active' : 'nav-link'}
+        >
+          Login
+        </a>
+      </li>
+      </ul>
           );
         }
     }

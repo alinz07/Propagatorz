@@ -2,7 +2,7 @@ import React from "react";
 import Nav from '../src/components/Nav'
 import Footer from "./components/Footer";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
     ApolloClient,
     InMemoryCache,
@@ -46,17 +46,17 @@ function App() {
         <div>
             {/* <StoreProvider> */}
             <Nav />
-             <Switch>
+             <Routes>
                             <Route exact path="/" component={Home} />
-                            <Route exact path="/login" component={Login} />
-                            <Route exact path="/signup" component={Signup} />
+                            <Route exact path="/login" element={<Login/>}/>
+                            <Route exact path="/signup" element={<Signup/>}/>
                             {/* <Route
                                 exact
                                 path="/singlePost/:id"
                                 component={SinglePost}
                             /> */}
                             {/* <Route component={NoMatch} /> */}
-                        </Switch>
+                        </Routes>
             <Footer />
             {/* </StoreProvider> */}
         

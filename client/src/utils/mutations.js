@@ -54,3 +54,33 @@ export const ADD_POST = gql`
         }
     }
 `;
+
+export const ADD_POST_TWO = gql`
+mutation addPost(
+  $title: String!, 
+  $plantType: String!, 
+  $description: String!, 
+  $picture: String!
+  )
+  {
+    addPost(
+      title: $title, 
+      plantType: $plantType, 
+      description: $description, 
+      picture: $picture
+      ) 
+      {
+        _id
+        title
+        plantType
+        description
+        picture
+        createdAt
+        username
+        commentCount
+        comments {
+          _id
+        }
+      }
+  }
+`;

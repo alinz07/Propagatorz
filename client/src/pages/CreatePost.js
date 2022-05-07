@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-// import { useMutation } from '@apollo/client';
-// import { ADD_POST } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { ADD_POST } from '../utils/mutations';
 // import {QUERY_ALL_POSTS} from '../utils/queries';
 
 const CreatePost = () => {
-
     // const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
     // console.log(CLOUD_PRESET)
 
@@ -54,39 +53,6 @@ const CreatePost = () => {
         }
     }
 
-    // const [addPost, { error }] = useMutation(ADD_POST, {
-    //     update(cache, { data: { addPost } }) {
-    //         try {
-    //             const { posts } = cache.readQuery({ query: QUERY_ALL_POSTS });
-    //             cache.writeQuery({
-    //                 query: QUERY_ALL_POSTS,
-    //                 data: { posts: [addPost, ...posts] }
-    //             });
-    //         } catch (e) {
-    //             console.error(e);
-    //         }
-    //     }
-    // })
-
-
-    const handleFormSubmit = async e => {
-        e.preventDefault();
-
-        // upload image to cloudinary and set state
-        uploadImage()
-
-        // try {
-        //     // add post to database
-        //     await addPost({
-        //         variables: { formState }
-        //     });
-        //     setFormState('');
-        //     console.log(formState)
-        // } catch (e) {
-        //     console.error(e);
-        // }
-    }
-
     // upload image to cloudinary and set state
     const uploadImage = () => {
         // console.log(imageSelected)
@@ -110,6 +76,36 @@ const CreatePost = () => {
                 console.log(formState)
             })
     };
+
+    const [addPost, { error }] = useMutation(ADD_POST)
+
+    // const [addPost, { error }] = useMutation(ADD_POST, {
+    //     update(cache, { data: { addPost } }) {
+    //         try {
+    //             //
+    //         } catch (e) {
+    //             console.error(e);
+    //         }
+    //     }
+    // })
+
+    const handleFormSubmit = async e => {
+        e.preventDefault();
+
+        // upload image to cloudinary and set state
+        uploadImage()
+
+        try {
+            // add post to database
+            await addPost({
+                variables: { formState }
+            });
+            // clear form value
+            //setFormState('');
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     return (
         <section>
@@ -153,7 +149,7 @@ const CreatePost = () => {
                     Submit
                 </button>
 
-                {/* {error && <span>Something went wrong...</span>} */}
+                {error && <span>Something went wrong...</span>}
 
             </form>
         </section>

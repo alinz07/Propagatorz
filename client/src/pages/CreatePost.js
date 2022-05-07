@@ -8,11 +8,12 @@ const CreatePost = () => {
     const [formState, setFormState] = useState({ title: '', plantType: '', description: '', picture: '' })
     const { picture } = formState;
     const [errorMessage, setErrorMessage] = useState('');
+    const [loadingMessage, setLoadingMessage] = useState('');
 
     const [imageSelected, setImageSelected] = useState('');
     const [preview, setPreview] = useState();
 
-    const [addPost, { error }] = useMutation(ADD_POST)
+    const [addPost, { error }] = useMutation(ADD_POST);
 
     // useEffect so that user can see a preview of image before hitting submit
     useEffect(() => {
@@ -93,6 +94,7 @@ const CreatePost = () => {
         e.preventDefault();
         // upload image to cloudinary and set state
         uploadImage()
+        setLoadingMessage('Working on it...')
         return
     }
 
@@ -103,7 +105,9 @@ const CreatePost = () => {
                 variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
             });
             // clear form value
-            setFormState('');
+            setLoadingMessage('')
+            setFormState({ title: '', plantType: '', description: '', picture: '' });
+            console.log(formState)
         } catch (e) {
             console.error(e);
         }
@@ -150,6 +154,8 @@ const CreatePost = () => {
                 <button type="submit">
                     Submit
                 </button>
+
+                {loadingMessage && <p>{loadingMessage}</p>}
 
                 {error && <span>Something went wrong...</span>}
 

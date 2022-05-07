@@ -4,8 +4,7 @@ import { ADD_POST } from '../utils/mutations';
 // import {QUERY_ALL_POSTS} from '../utils/queries';
 
 const CreatePost = () => {
-    // const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
-    // console.log(CLOUD_PRESET)
+    const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
 
     const [formState, setFormState] = useState({ title: '', plantType: '', description: '', picture: '' })
     const { picture } = formState;
@@ -54,19 +53,18 @@ const CreatePost = () => {
     }
 
     // upload image to cloudinary and set state
-    const uploadImage = () => {
+    const uploadImage = async () => {
         // console.log(imageSelected)
         const formData = new FormData()
         formData.append('file', imageSelected)
-        formData.append("upload_preset", "g7iqwrdf")
-        // formData.append("upload_preset", (CLOUD_PRESET))
+        formData.append("upload_preset", (CLOUD_PRESET))
 
         fetch("https://api.cloudinary.com/v1_1/dk53zrwwe/image/upload", {
             method: 'post',
             body: formData
         })
-            .then(async response =>
-                await response.json()
+            .then(response =>
+                response.json()
             )
             .then(data => {
                 // console.log(data)
@@ -79,16 +77,6 @@ const CreatePost = () => {
 
     const [addPost, { error }] = useMutation(ADD_POST)
 
-    // const [addPost, { error }] = useMutation(ADD_POST, {
-    //     update(cache, { data: { addPost } }) {
-    //         try {
-    //             //
-    //         } catch (e) {
-    //             console.error(e);
-    //         }
-    //     }
-    // })
-
     const handleFormSubmit = async e => {
         e.preventDefault();
 
@@ -97,11 +85,12 @@ const CreatePost = () => {
 
         try {
             // add post to database
+            // await uploadImage()
             await addPost({
-                variables: { formState }
+                variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
             });
             // clear form value
-            //setFormState('');
+            setFormState('');
         } catch (e) {
             console.error(e);
         }

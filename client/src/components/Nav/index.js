@@ -1,7 +1,8 @@
 import React from 'react';
-//import Auth from '../../utils/auth';
-//import { Link } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar'
+import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar';
+
 
 
 function Nav() {
@@ -12,9 +13,9 @@ function Nav() {
             <ul className="flex-row">
 
                 <li className="mx-1">
-                  {/* {<Link to="/Home">
+                  {<Link to="/Home">
                      Posts
-                  </Link>} */}
+                  </Link>}
                   <p>Home</p>
                 </li>
                 {/* <li className="mx-1">
@@ -35,12 +36,12 @@ function Nav() {
           return (
             <ul className="flex-row">
               <li className="mx-1">
-                <Link to="/signup">
+                <Link to="/Signup">
                   Signup
                 </Link> 
               </li>
               <li className="mx-1">
-                <Link to="/login">
+                <Link to="/Login">
                   Login
                 </Link>
               </li>
@@ -64,10 +65,11 @@ function Nav() {
                 
             </h1>
             <nav>
-                {showNavigation()}
+              {showNavigation()}
             </nav>
         </header>
     );
+  
 }
 
 export default Nav;

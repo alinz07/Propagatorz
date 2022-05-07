@@ -118,7 +118,7 @@ export const UPDATE_POST = gql`
 `;
 
 export const DELETE_POST = gql`
-  mutation ($title: String!, plantType: String!) {
+  mutation ($title: String!, $plantType: String!) {
     deletePost (
       where: {
         id: {
@@ -133,14 +133,14 @@ export const DELETE_POST = gql`
 
 export const ADD_COMMENT = gql`
   mutation addComment(
-      $post.id: Int
+      $post: Int
     ) {
         addComment(
             comment: $comment
             description: $description
         ) {
             token
-            post.comment {
+            comment {
               _id
               description
             }
@@ -150,14 +150,14 @@ export const ADD_COMMENT = gql`
 
 export const UPDATE_COMMENT = gql`
   mutation updateComment(
-      $post.comment.id: Int
+      $post: Int
     ) {
         updateComment(
-            comment.id: $comment.id
+            comment: $comment
             description: $description
         ) {
             token
-            post.comment {
+            comment {
               _id
               description
             }
@@ -166,11 +166,11 @@ export const UPDATE_COMMENT = gql`
 `;
 
 export const DELETE_COMMENT = gql`
-  mutation ($post.comment.id: Int, $description: String!) {
+  mutation ($comment: String!, $description: String!) {
     deleteComment (
       where: {
-        post.comment.id: {
-          _eq: $post.commnet.id
+        comment: {
+          _eq: $comment
         }
       }
     ) {

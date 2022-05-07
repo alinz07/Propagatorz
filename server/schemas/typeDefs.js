@@ -47,7 +47,7 @@ const typeDefs = gql`
             title: String!
             plantType: String!
             description: String!
-            picture: String
+            picture: String!
         ): Post
         addComment(postId: ID!, commentBody: String!): Post
     }

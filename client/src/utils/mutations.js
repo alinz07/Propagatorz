@@ -30,7 +30,7 @@ export const ADD_POST = gql`
       $title: String!
       $plantType: String!
       $description: String!
-      $picture: String
+      $picture: String!
     ) {
         addPost(
             title: $title

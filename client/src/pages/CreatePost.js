@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
-// import {QUERY_ALL_POSTS} from '../utils/queries';
 
 const CreatePost = () => {
     const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
@@ -12,6 +11,8 @@ const CreatePost = () => {
 
     const [imageSelected, setImageSelected] = useState('');
     const [preview, setPreview] = useState();
+
+    const [addPost, { error }] = useMutation(ADD_POST)
 
     // useEffect so that user can see a preview of image before hitting submit
     useEffect(() => {
@@ -29,9 +30,22 @@ const CreatePost = () => {
     // useEffect so that the picture url from cloudinary gets updated in the formState
     useEffect(() => {
         if (!picture) {
-            return;
+            return
         } else {
             console.log(formState);
+            updateDB();
+            // try {
+            //     // add post to database
+            //     // await uploadImage()
+            //     addPost({
+            //         variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
+            //     });
+
+            //     // clear form value
+            //     // setFormState({ title: '', plantType: '', description: '', picture: '' });
+            // } catch (e) {
+            //     console.error(e);
+            // }
         }
     }, [picture, formState]);
 
@@ -75,18 +89,17 @@ const CreatePost = () => {
             })
     };
 
-    const [addPost, { error }] = useMutation(ADD_POST)
-
     const handleFormSubmit = async e => {
         e.preventDefault();
-
         // upload image to cloudinary and set state
         uploadImage()
+        return
+    }
 
+    const updateDB = () => {
         try {
             // add post to database
-            // await uploadImage()
-            await addPost({
+            addPost({
                 variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
             });
             // clear form value
@@ -139,6 +152,7 @@ const CreatePost = () => {
                 </button>
 
                 {error && <span>Something went wrong...</span>}
+
 
             </form>
         </section>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
+import { Button } from '@mui/material';
 
 const CreatePost = () => {
     const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
@@ -149,9 +150,9 @@ const CreatePost = () => {
                     <div>{errorMessage}</div>
                 )}
 
-                <button type="submit">
+                <Button type="submit" variant="contained">
                     Submit
-                </button>
+                </Button>
 
                 {loadingMessage && <div>{loadingMessage}</div>}
 

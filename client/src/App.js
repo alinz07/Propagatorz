@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "../src/components/Nav";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
     ApolloClient,
     InMemoryCache,
@@ -11,7 +11,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { StoreProvider } from "./utils/globalState";
 
-// import SinglePost from "./pages/SinglePost";
+import SinglePost from "./pages/SinglePost";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -41,19 +41,18 @@ function App() {
             <Router>
                 <div>
                     <StoreProvider>
-                        {}
                         <Nav />
-                        <Switch>
+                        <Routes>
                             <Route exact path="/" component={Home} />
                             <Route exact path="/login" component={Login} />
                             <Route exact path="/signup" component={Signup} />
-                            {/* <Route
+                            <Route
                                 exact
                                 path="/singlePost/:id"
                                 component={SinglePost}
                             />
-                            <Route component={NoMatch} /> */}
-                        </Switch>
+                            <Route component={NoMatch} />,{" "}
+                        </Routes>
                     </StoreProvider>
                     <Footer />
                 </div>

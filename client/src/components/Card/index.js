@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 
 function PostCard(post) {
     const {
+        id,
         title,
         commentCount,
         comments,
@@ -15,11 +16,10 @@ function PostCard(post) {
         plantType,
         username,
     } = post;
-    console.log(title);
 
     return (
         <Grid item xs={12} md={6} xl={4}>
-            <Card width={300} id="react-card">
+            <Card key={id} width={300} id="react-card">
                 <CardMedia
                     component="img"
                     alt={plantType}
@@ -49,7 +49,7 @@ function PostCard(post) {
                         </Grid>
                         <Grid pt={1} item xs={12} fontSize="h6.fontSize">
                             {comments.map((comment) => (
-                                <div>
+                                <div key={comment._id}>
                                     <p>{comment.commentBody}</p>
                                     <span>
                                         {comment.username} on{" "}

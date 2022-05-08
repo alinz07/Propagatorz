@@ -53,6 +53,7 @@ function CardList() {
             {posts.map((post) => (
                 <PostCard
                     key={post._id}
+                    id={post._id}
                     title={post.title}
                     commentCount={post.commentCount}
                     comments={post.comments}

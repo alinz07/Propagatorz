@@ -31,25 +31,27 @@ const CreatePost = () => {
 
     // useEffect so that the picture url from cloudinary gets updated in the formState
     useEffect(() => {
+        const updateDB = () => {
+            try {
+                // add post to database
+                addPost({
+                    variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
+                });
+                // clear form value
+                setLoadingMessage('Done!')
+                setFormState({ title: '', plantType: '', description: '', picture: '' });
+                console.log(formState)
+            } catch (e) {
+                console.error(e);
+            }
+        }
         if (!picture) {
             return
         } else {
             console.log(formState);
             updateDB();
-            // try {
-            //     // add post to database
-            //     // await uploadImage()
-            //     addPost({
-            //         variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
-            //     });
-
-            //     // clear form value
-            //     // setFormState({ title: '', plantType: '', description: '', picture: '' });
-            // } catch (e) {
-            //     console.error(e);
-            // }
         }
-    }, [picture, formState]);
+    }, [picture, formState, addPost]);
 
     // form input handler
     function handleChange(e) {
@@ -97,21 +99,6 @@ const CreatePost = () => {
         uploadImage()
         setLoadingMessage('Working on it...')
         return
-    }
-
-    const updateDB = () => {
-        try {
-            // add post to database
-            addPost({
-                variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
-            });
-            // clear form value
-            setLoadingMessage('Done!')
-            setFormState({ title: '', plantType: '', description: '', picture: '' });
-            console.log(formState)
-        } catch (e) {
-            console.error(e);
-        }
     }
 
     return (

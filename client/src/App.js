@@ -1,4 +1,6 @@
 import React from "react";
+import Nav from '../src/components/Nav'
+import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
     ApolloClient,
@@ -64,6 +66,7 @@ function App() {
                         <Footer />
                     </StoreProvider>
                 </div>
+
             </Router>
         </ApolloProvider>
     );

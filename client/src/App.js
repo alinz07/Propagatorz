@@ -18,9 +18,6 @@ import Signup from "./pages/Signup";
 import CreatePost from "./pages/CreatePost";
 import NoMatch from "./pages/NoMatch";
 
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-
 const httpLink = createHttpLink({
     uri: "http://localhost:3001/graphql",
 });

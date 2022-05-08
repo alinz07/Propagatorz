@@ -7,9 +7,9 @@ import {
     createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-// import { StoreProvider } from "./utils/GlobalState";
+import { StoreProvider } from "./utils/globalState";
 
-// import SinglePost from "./pages/SinglePost";
+import SinglePost from "./pages/SinglePost";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -43,22 +43,26 @@ function App() {
         <ApolloProvider client={client}>
             <Router>
                 <div>
-                    {/* <StoreProvider> */}
-                    <Nav />
-                    <Routes>
-                        <Route exact path="/" element={<Home />} />
-                        <Route exact path="/login" element={<Login />} />
-                        <Route exact path="/signup" element={<Signup />} />
-                        {/* <Route
+                    <StoreProvider>
+                        <Nav />
+                        <Routes>
+                            <Route exact path="/" element={<Home />} />
+                            <Route exact path="/login" element={<Login />} />
+                            <Route exact path="/signup" element={<Signup />} />
+                            {/* <Route
                                 exact
                                 path="/singlePost/:id"
                                 component={SinglePost}
                             /> */}
-                        <Route exact path="/createPost" element={<CreatePost />} />
-                        <Route element={<NoMatch />} />
-                    </Routes>
-                    <Footer />
-                    {/* </StoreProvider> */}
+                            <Route
+                                exact
+                                path="/createPost"
+                                element={<CreatePost />}
+                            />
+                            <Route element={<NoMatch />} />
+                        </Routes>
+                        <Footer />
+                    </StoreProvider>
                 </div>
             </Router>
         </ApolloProvider>

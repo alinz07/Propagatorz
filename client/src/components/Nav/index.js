@@ -63,10 +63,12 @@ function Nav() {
 
             </h1>
             <nav>
-                {showNavigation()}
+                  
+              {showNavigation()}
             </nav>
         </header>
     );
+  
 }
 
 export default Nav;

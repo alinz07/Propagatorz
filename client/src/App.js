@@ -1,6 +1,4 @@
 import React from "react";
-import Nav from '../src/components/Nav'
-import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
     ApolloClient,
@@ -17,6 +15,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreatePost from "./pages/CreatePost";
 import NoMatch from "./pages/NoMatch";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 const httpLink = createHttpLink({
     uri: "http://localhost:3001/graphql",

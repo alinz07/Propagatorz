@@ -1,6 +1,4 @@
 import React from "react";
-import Nav from "../src/components/Nav";
-import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
     ApolloClient,
@@ -15,9 +13,14 @@ import SinglePost from "./pages/SinglePost";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import CreatePost from "./pages/CreatePost";
+import NoMatch from "./pages/NoMatch";
+
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 const httpLink = createHttpLink({
-    uri: "/graphql",
+    uri: "http://localhost:3001/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -43,18 +46,23 @@ function App() {
                     <StoreProvider>
                         <Nav />
                         <Routes>
-                            <Route exact path="/" component={Home} />
-                            <Route exact path="/login" component={Login} />
-                            <Route exact path="/signup" component={Signup} />
-                            <Route
+                            <Route exact path="/" element={<Home />} />
+                            <Route exact path="/login" element={<Login />} />
+                            <Route exact path="/signup" element={<Signup />} />
+                            {/* <Route
                                 exact
                                 path="/singlePost/:id"
                                 component={SinglePost}
+                            /> */}
+                            <Route
+                                exact
+                                path="/createPost"
+                                element={<CreatePost />}
                             />
-                            <Route component={NoMatch} />,{" "}
+                            <Route element={<NoMatch />} />
                         </Routes>
+                        <Footer />
                     </StoreProvider>
-                    <Footer />
                 </div>
             </Router>
         </ApolloProvider>

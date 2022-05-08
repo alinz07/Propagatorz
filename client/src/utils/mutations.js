@@ -31,21 +31,34 @@ export const ADD_POST = gql`
       $plantType: String!
       $description: String!
       $picture: String!
-      $createdAt: Date!
-      $username: String!
     ) {
         addPost(
             title: $title
             plantType: $plantType
             description: $description
             picture: $picture
-            createdAt: $createdAt
-            username: $username
         ) {
-            token
-            user {
-              _id
-            }
+          _id
+          title
+          plantType
+          description
+          picture
+          createdAt
+          username
         }
     }
+`;
+
+export const ADD_COMMENT = gql`
+mutation addComment($postId: ID!, $commentBody: String!) {
+  addComment(postId: $postId, commentBody: $commentBody) {
+    _id
+    title
+    commentCount
+    comments {
+      _id
+      commentBody
+    }
+  }
+}
 `;

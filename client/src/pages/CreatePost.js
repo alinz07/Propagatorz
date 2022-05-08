@@ -105,7 +105,7 @@ const CreatePost = () => {
                 variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
             });
             // clear form value
-            setLoadingMessage('')
+            setLoadingMessage('Done!')
             setFormState({ title: '', plantType: '', description: '', picture: '' });
             console.log(formState)
         } catch (e) {
@@ -146,18 +146,16 @@ const CreatePost = () => {
                 </div>
 
                 {errorMessage && (
-                    <div>
-                        <p>{errorMessage}</p>
-                    </div>
+                    <div>{errorMessage}</div>
                 )}
 
                 <button type="submit">
                     Submit
                 </button>
 
-                {loadingMessage && <p>{loadingMessage}</p>}
+                {loadingMessage && <div>{loadingMessage}</div>}
 
-                {error && <span>Something went wrong...</span>}
+                {error && <div>Something went wrong...</div>}
 
 
             </form>

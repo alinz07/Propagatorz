@@ -7,13 +7,13 @@ export const reducer = (state, action) => {
         case UPDATE_POSTS:
             return {
                 ...state,
-                products: [...action.products],
+                posts: [...action.posts],
             };
         // if action type value is the value of `UPDATE_CATEGORIES`, return a new state object with an updated categories array
         case UPDATE_USERS:
             return {
                 ...state,
-                categories: [...action.categories],
+                users: [...action.users],
             };
         case UPDATE_FORMDATA:
             return {

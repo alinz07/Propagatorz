@@ -67,8 +67,8 @@ export const QUERY_ALL_USERS = gql`
 `;
 
 export const QUERY_ONE_USER = gql`
-    User($username: String!) {
-        user(username: $username) {
+    query getUser($username: String!) {
+        User(username: $username) {
             _id
             email
             posts {

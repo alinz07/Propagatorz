@@ -68,21 +68,20 @@ export const ADD_POST = gql`
       $plantType: String!
       $description: String!
       $picture: String!
-      $createdAt: Date!
-      $username: String!
     ) {
         addPost(
             title: $title
             plantType: $plantType
             description: $description
             picture: $picture
-            createdAt: $createdAt
-            username: $username
         ) {
-            token
-            user {
-              _id
-            }
+          _id
+          title
+          plantType
+          description
+          picture
+          createdAt
+          username
         }
     }
 `;

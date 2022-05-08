@@ -12,9 +12,9 @@ function Nav() {
                 <ul className="flex-row">
 
                     <li className="mx-1">
-                        {<Link to="/Home">
+
                      Posts
-                  </Link>}
+
                     </li>
                     <li className="mx-1">
                         <Link to="/createPost">

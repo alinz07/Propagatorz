@@ -40,14 +40,6 @@ function Nav() {
             );
         } else {
             return (
-<<<<<<< HEAD
-                <ul className="flex-row">
-                    <li className="mx-1">
-                        <Link to="/signup">Signup</Link>
-                    </li>
-                    <li className="mx-1">
-                        <Link to="/login">Login</Link>
-=======
                 <ul>
                     <li>
                         <Link to="/signup">
@@ -58,7 +50,6 @@ function Nav() {
                         <Link to="/login">
                             Login
                         </Link>
->>>>>>> 415d5c2a93c00a3f1f61ab959100547f5b867f04
                     </li>
                 </ul>
             );
@@ -66,21 +57,6 @@ function Nav() {
     }
 
     return (
-<<<<<<< HEAD
-        <header className="flex-row px-1">
-            <h1>
-                <Avatar
-                    alt="plant image"
-                    src={require("../../assets/Images/sad-plant.jpg")}
-                    sx={{ width: 50, height: 50 }}
-                    variant="square"
-                ></Avatar>
-                Propagatorz
-            </h1>
-            <nav>{showNavigation()}</nav>
-        </header>
-    );
-=======
         <header>
             <Link to="/">
                 <h1>
@@ -99,7 +75,6 @@ function Nav() {
         </header>
     );
 
->>>>>>> 415d5c2a93c00a3f1f61ab959100547f5b867f04
 }
 
 export default Nav;

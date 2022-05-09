@@ -22,10 +22,10 @@
     "homepage": "https://github.com/alinz07/Propagatorz#readme",
     "dependencies": {
         "@mui/icons-material": "^5.6.2",
-        "@mui/material": "^5.6.4",
-        "react": "^18.1.0"
+        "@mui/material": "^5.6.4"
     },
     "devDependencies": {
-        "concurrently": "^7.1.0"
+        "concurrently": "^7.1.0",
+        "cross-env": "^7.0.3"
     }
 }

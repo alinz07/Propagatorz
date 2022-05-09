@@ -54,7 +54,7 @@ function Nav() {
                 <h1>
                     <Avatar
                         alt="plant image"
-                        src={require("../../assets/Images/sad-plant.jpg")}
+                        src={require("../../assets/Images/sad-plant.png")}
                         sx={{ width: 80, height: 80 }}
                         variant="square"
                     ></Avatar>

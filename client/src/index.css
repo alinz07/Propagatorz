@@ -21,12 +21,12 @@ body {
     font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-.main-wrapper {
+/* .main-wrapper {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
-}
+} */
 
 header {
     padding: 20px 35px;
@@ -71,7 +71,7 @@ header nav ul li a:hover {
 }
 
 /* Login/Signup and Create Post Forms */
-.go-to-text {
+/* .go-to-text {
     color: var(--light);
     text-decoration: none;
 }
@@ -125,7 +125,7 @@ button {
 button:hover {
     background-color: var(--light-green);
     border: 1px solid var(--light-green);
-}
+} */
 
 
 /* footer */

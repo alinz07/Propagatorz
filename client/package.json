@@ -22,7 +22,12 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
+<<<<<<< HEAD
         "start": " cross-env GENERATE_SOURCEMAP=FALSE react-scripts start",
+=======
+
+        "start": "GENERATE_SOURCEMAP=false react-scripts start",
+>>>>>>> 415d5c2a93c00a3f1f61ab959100547f5b867f04
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"

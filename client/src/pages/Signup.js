@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
+=======
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
+import { Link } from "react-router-dom";
+>>>>>>> 415d5c2a93c00a3f1f61ab959100547f5b867f04
 
 import Auth from "../utils/auth";
 
@@ -48,6 +55,7 @@ const Signup = () => {
         }
     };
 
+<<<<<<< HEAD
     return (
         <main className="flex-row justify-center mb-4">
             <div className="col-12 col-md-6">
@@ -86,6 +94,56 @@ const Signup = () => {
                                 Submit
                             </button>
                         </form>
+=======
+  return (
+    <main className="sign-in-form">
+      <Link to="/login" className='go-to-text'>← Go to Login</Link>
+      <div>
+        <div>
+          <h2 className="sign-in-form-heading">Sign Up</h2>
+          <div>
+            <form onSubmit={handleFormSubmit}>
+              <div>
+                <label htmlFor="username">Username: </label>
+                <input
+                  className="form-input"
+                  placeholder="Your username"
+                  name="username"
+                  type="username"
+                  id="username"
+                  value={formState.username}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="email">Email address:</label>
+                <input
+                  className="form-input"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  id="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="password">Password:</label>
+                <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  id="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+              </div>
+              <button type="submit">
+                Submit
+              </button>
+            </form>
+>>>>>>> 415d5c2a93c00a3f1f61ab959100547f5b867f04
 
                         {error && signupError === "usernameError" && (
                             <div>

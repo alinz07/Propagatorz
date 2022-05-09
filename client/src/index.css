@@ -4,3 +4,142 @@
 .delBtn {
     background: #a7c957 !important;
 }
+:root {
+    --main-green: rgba(56, 102, 65, 1);
+    --med-green: rgba(106, 153, 78, 1);
+    --light-green: rgba(167, 201, 87, 1);
+    --light: rgba(242, 232, 207, 1);
+    --red: rgba(188, 71, 73, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.error-message {
+    color: rgba(188, 71, 73, 1)
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* .main-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+} */
+
+header {
+    padding: 20px 35px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-weight: bold;
+    font-size: 36px;
+    color: var(--main-green);
+    margin: 0;
+    display: inline;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--main-green);
+}
+
+header nav {
+    margin: 7px 0;
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+header nav ul li a {
+    margin: 0 30px;
+    font-size: 22px;
+    padding: 0 8px 3px 8px;
+}
+
+header nav ul li a:hover {
+    border-bottom: 3px solid var(--main-green);
+}
+
+/* Login/Signup and Create Post Forms */
+/* .go-to-text {
+    color: var(--light);
+    text-decoration: none;
+}
+
+.sign-in-form,
+.create-post-form {
+    background-color: var(--med-green);
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 5px;
+    width: 700px;
+}
+
+.sign-in-form-heading {
+    font-size: 30px;
+    text-align: center;
+    color: var(--light)
+}
+
+form input {
+    width: 100%;
+    height: 40px;
+}
+
+form textarea {
+    width: 100%;
+    ;
+    height: 200px;
+}
+
+form div {
+    padding: 10px;
+    margin: 10px;
+    color: var(--light)
+}
+
+button {
+    padding: 10px 40px;
+    margin: 30px;
+    background-color: var(--main-green);
+    color: var(--light);
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px solid var(--main-green);
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: var(--light-green);
+    border: 1px solid var(--light-green);
+} */
+
+
+/* footer */
+footer {
+    background-color: var(--main-green);
+    color: var(--light);
+    padding: 20px;
+    line-height: 40px;
+    display: flex;
+    margin-top: auto;
+}

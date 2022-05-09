@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 
 const CreatePost = () => {
     const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
@@ -55,11 +55,10 @@ const CreatePost = () => {
 
     // form input handler
     function handleChange(e) {
-        if (e.target.name === 'title' || e.target.name === 'plantType' || e.target.name === 'description') {
-            if (!e.target.value.length) {
-                setErrorMessage(`${e.target.name} is required.`)
-            }
-        } else {
+        if (!e.target.value.length) {
+            setErrorMessage(`${e.target.name} is required.`)
+        }
+        else {
             setErrorMessage('');
         }
 
@@ -102,8 +101,8 @@ const CreatePost = () => {
     }
 
     return (
-        <section>
-            <h2>Submit a plant help form</h2>
+        <section className="create-post-form">
+            <h2 className="sign-in-form-heading">Submit a plant help form</h2>
 
             <form onSubmit={handleFormSubmit}>
 
@@ -134,16 +133,16 @@ const CreatePost = () => {
                 </div>
 
                 {errorMessage && (
-                    <div>{errorMessage}</div>
+                    <div className='error-message'>{errorMessage}</div>
                 )}
 
-                <Button type="submit" variant="contained">
+                <button type="submit" variant="contained">
                     Submit
-                </Button>
+                </button>
 
                 {loadingMessage && <div>{loadingMessage}</div>}
 
-                {error && <div>Something went wrong...</div>}
+                {error && <div className='error-message'>Something went wrong...</div>}
 
 
             </form>

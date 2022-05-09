@@ -1,0 +1,6 @@
+.cardPic {
+    object-fit: contain !important;
+}
+.delBtn {
+    background: #a7c957 !important;
+}

@@ -49,7 +49,7 @@ function CardList() {
     }
 
     return (
-        <Grid container display="flex" wrap="wrap">
+        <Grid container display="flex" wrap="wrap" justifyContent="center">
             {filterPosts().map((post) => (
                 <PostCard
                     key={post._id}

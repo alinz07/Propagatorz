@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
+import { UPDATE_LOGGED_IN_USER } from "../utils/actions";
 
 import Auth from "../utils/auth";
+import { useStoreContext } from "../utils/globalState";
 
 const Signup = () => {
     const [formState, setFormState] = useState({
@@ -32,7 +34,6 @@ const Signup = () => {
             const { data } = await addUser({
                 variables: { ...formState },
             });
-
             Auth.login(data.addUser.token);
         } catch (e) {
             console.error(e);
@@ -88,20 +89,20 @@ const Signup = () => {
                             </button>
                         </form>
 
-                        {error && signupError == "usernameError" && (
+                        {error && signupError === "usernameError" && (
                             <div>
                                 Username is already taken, please choose another
                                 and resubmit
                             </div>
                         )}
-                        {error && signupError == "emailError" && (
+                        {error && signupError === "emailError" && (
                             <div>
                                 Email already has an account, please use another
                                 email account and resubmit or select forgot
                                 password?
                             </div>
                         )}
-                        {error && signupError == "passError" && (
+                        {error && signupError === "passError" && (
                             <div>
                                 Password must be more than 4 characters in
                                 length. Please enter a different password and

@@ -5,6 +5,7 @@ import { useStoreContext } from "../../utils/globalState";
 import PostCard from "../Card";
 import { QUERY_ALL_POSTS } from "../../utils/queries";
 import { UPDATE_POSTS } from "../../utils/actions";
+import Auth from "../../utils/auth";
 
 function CardList() {
     const [state, dispatch] = useStoreContext();
@@ -37,20 +38,19 @@ function CardList() {
         }
     }, [data, loading, dispatch]);
 
-    //maybe keep this to filter posts when they click to view only their posts
-    // function filterProducts() {
-    //     if (!currentCategory) {
-    //         return state.products;
-    //     }
-
-    //     return state.products.filter(
-    //         (product) => product.category._id === currentCategory
-    //     );
-    // }
+    function filterPosts() {
+        if (Auth.loggedIn() && state.postFilter && state.loggedInUser)
+            return state.posts.filter(
+                (post) => post.username === state.loggedInUser
+            );
+        else {
+            return state.posts;
+        }
+    }
 
     return (
         <Grid container display="flex" wrap="wrap">
-            {posts.map((post) => (
+            {filterPosts().map((post) => (
                 <PostCard
                     key={post._id}
                     id={post._id}

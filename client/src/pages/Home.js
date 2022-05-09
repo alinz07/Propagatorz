@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_USERS } from "../utils/queries";
 import { useStoreContext } from "../utils/globalState";
-import { UPDATE_USERS } from "../utils/actions";
+import { UPDATE_USERS, UPDATE_LOGGED_IN_USER } from "../utils/actions";
+import Auth from "../utils/auth";
 
 const Home = () => {
     const [state, dispatch] = useStoreContext();
@@ -16,23 +17,20 @@ const Home = () => {
                 type: UPDATE_USERS,
                 users: data.users,
             });
-            // console.log(state);
-
-            //also take each prodcut and save it to IndexedDB using the helper function
-            // data.products.forEach((product) => {
-            //     idbPromise("products", "put", product);
-            // });
-            // } else if (!loading) {
-            //     //since we're offline, get all of the data from the 'products' store
-            //     idbPromise("products", "get").then((products) => {
-            //         //use retrieved data to set global state for offline browsing
-            //         dispatch({
-            //             type: UPDATE_PRODUCTS,
-            //             products: products,
-            //         });
-            //     });
         }
     }, [data, loading, dispatch]);
+
+    useEffect(() => {
+        if (Auth.loggedIn()) {
+            let zeToken = Auth.getToken();
+            let currentUser = Auth.getUserProfile(zeToken).data.username;
+
+            dispatch({
+                type: UPDATE_LOGGED_IN_USER,
+                loggedInUser: currentUser,
+            });
+        }
+    }, []);
 
     return (
         <div className="cardlist-container">

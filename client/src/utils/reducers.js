@@ -1,5 +1,11 @@
 import { useReducer } from "react";
-import { UPDATE_POSTS, UPDATE_USERS, UPDATE_FORMDATA } from "../utils/actions";
+import {
+    UPDATE_POSTS,
+    UPDATE_USERS,
+    UPDATE_FORMDATA,
+    UPDATE_FILTER,
+    UPDATE_LOGGED_IN_USER,
+} from "../utils/actions";
 
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -19,6 +25,16 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 formData: [...action.formData],
+            };
+        case UPDATE_FILTER:
+            return {
+                ...state,
+                postFilter: !state.postFilter,
+            };
+        case UPDATE_LOGGED_IN_USER:
+            return {
+                ...state,
+                loggedInUser: action.loggedInUser,
             };
 
         default:

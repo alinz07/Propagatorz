@@ -2,13 +2,31 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
+import { useStoreContext } from "../../utils/globalState";
+import { UPDATE_FILTER } from "../../utils/actions";
 
 function Nav() {
+    const [state, dispatch] = useStoreContext();
+
+    function filterPosts() {
+        dispatch({ type: UPDATE_FILTER });
+    }
+
     function showNavigation() {
         if (Auth.loggedIn()) {
             return (
                 <ul className="flex-row">
-                    <li className="mx-1">{<Link to="/">Posts</Link>}</li>
+                    <li className="mx-1">
+                        {
+                            <Link to="/" onClick={filterPosts}>
+                                {state.postFilter ? (
+                                    <div>All Posts</div>
+                                ) : (
+                                    <div>My Posts</div>
+                                )}
+                            </Link>
+                        }
+                    </li>
                     <li className="mx-1">
                         <Link to="/createPost">Create Post</Link>
                     </li>

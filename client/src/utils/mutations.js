@@ -103,13 +103,15 @@ export const UPDATE_POST = gql`
     }
 `;
 
-// export const DELETE_POST = gql`
-//     mutation ($id: String!) {
-//         deletePost(where: { id: { _eq: $id } }) {
-//             affected_rows
-//         }
-//     }
-// `;
+export const DELETE_POST = gql`
+    mutation deletePost($_id: String!) {
+        deletePost(_id: $_id) {
+            _id
+            username
+            createdAt
+        }
+    }
+`;
 
 export const ADD_COMMENT = gql`
     mutation addComment($post: Int) {

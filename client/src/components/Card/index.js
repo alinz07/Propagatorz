@@ -6,34 +6,35 @@ import CardContent from "@mui/material/CardContent";
 import { useStoreContext } from "../../utils/globalState";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
-import { DELETE_POST } from "../../utils/actions";
+import { DELETE_POST } from "../../utils/mutations";
+import { DELETE_A_POST } from "../../utils/actions";
 import { useMutation } from "@apollo/client";
-import { DELETE_USER } from "../../utils/mutations";
 
 function PostCard(post) {
     const [state, dispatch] = useStoreContext();
 
-    // const [deletePost] = useMutation(DELETE_POST);
+    const [deletePost] = useMutation(DELETE_POST);
 
     const deletePostHandler = async (e) => {
         const postId = e.target.id;
 
         console.log(typeof postId);
         //answer is string
+        deleteStatePost(postId);
 
-        // try {
-        //     await deletePost({
-        //         variables: { id: postId },
-        //     });
-        //     deleteStatePost(postId);
-        // } catch (e) {
-        //     console.error(e);
-        // }
+        try {
+            await deletePost({
+                variables: { _id: postId },
+            });
+            deleteStatePost(postId);
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     const deleteStatePost = (postId) => {
         dispatch({
-            type: DELETE_POST,
+            type: DELETE_A_POST,
             _id: postId,
         });
     };

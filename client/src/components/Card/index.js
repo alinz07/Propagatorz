@@ -3,8 +3,41 @@ import { Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
+import { useStoreContext } from "../../utils/globalState";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
+import { DELETE_POST } from "../../utils/actions";
+import { useMutation } from "@apollo/client";
+import { DELETE_USER } from "../../utils/mutations";
 
 function PostCard(post) {
+    const [state, dispatch] = useStoreContext();
+
+    // const [deletePost] = useMutation(DELETE_POST);
+
+    const deletePostHandler = async (e) => {
+        const postId = e.target.id;
+
+        console.log(typeof postId);
+        //answer is string
+
+        // try {
+        //     await deletePost({
+        //         variables: { id: postId },
+        //     });
+        //     deleteStatePost(postId);
+        // } catch (e) {
+        //     console.error(e);
+        // }
+    };
+
+    const deleteStatePost = (postId) => {
+        dispatch({
+            type: DELETE_POST,
+            _id: postId,
+        });
+    };
+
     const {
         id,
         title,
@@ -25,7 +58,6 @@ function PostCard(post) {
                     alt={plantType}
                     height="200"
                     image={picture}
-                    // image={require(`../../assets/homepages/${picture}`)}
                 />
                 <CardContent>
                     <Grid container alignItems="center">
@@ -37,6 +69,14 @@ function PostCard(post) {
                         </Grid>
                         <Grid fontSize="h6.fontSize" p={2} pb={1} item xs={12}>
                             <div>{createdAt}</div>
+                            {username === state.loggedInUser && (
+                                <Button
+                                    variant="contained"
+                                    startIcon={<DeleteIcon />}
+                                    id={id}
+                                    onClick={deletePostHandler}
+                                ></Button>
+                            )}
                         </Grid>
                         <Grid mt={5} p={2} item xs={12} fontSize="h5.fontSize">
                             <div>{plantType}</div>

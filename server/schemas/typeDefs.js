@@ -54,3 +54,5 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
+
+// deletePost(_id: String!): Post

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
-import { UPDATE_LOGGED_IN_USER } from "../utils/actions";
 
 import Auth from "../utils/auth";
-import { useStoreContext } from "../utils/globalState";
 
 const Signup = () => {
     const [formState, setFormState] = useState({

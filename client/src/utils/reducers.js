@@ -5,6 +5,7 @@ import {
     UPDATE_FORMDATA,
     UPDATE_FILTER,
     UPDATE_LOGGED_IN_USER,
+    DELETE_POST,
 } from "../utils/actions";
 
 export const reducer = (state, action) => {
@@ -36,7 +37,14 @@ export const reducer = (state, action) => {
                 ...state,
                 loggedInUser: action.loggedInUser,
             };
-
+        case DELETE_POST:
+            let newState = state.posts.filter((post) => {
+                return post._id !== action._id;
+            });
+            return {
+                ...state,
+                posts: newState,
+            };
         default:
             return state;
     }

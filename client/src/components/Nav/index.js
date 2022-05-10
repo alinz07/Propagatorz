@@ -15,46 +15,39 @@ function Nav() {
     function showNavigation() {
         if (Auth.loggedIn()) {
             return (
-
-                    <li>
-                        {<Link to="/Home">
-                            My Posts
-                        </Link>}
-                <ul className="flex-row">
-                    <li className="mx-1">
-                        {
-                            <Link to="/" onClick={filterPosts}>
-                                {state.postFilter ? (
-                                    <div>All Posts</div>
-                                ) : (
-                                    <div>My Posts</div>
-                                )}
-                            </Link>
-                        }
-                    </li>
-                    <li className="mx-1">
-                        <Link to="/createPost">Create Post</Link>
-                    </li>
-                    <li>
-                        {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                        <a href="/" onClick={() => Auth.logout()}>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
+                <div>
+                    <ul className="flex-row">
+                        <li className="mx-1">
+                            {
+                                <Link to="/" onClick={filterPosts}>
+                                    {state.postFilter ? (
+                                        <div>All Posts</div>
+                                    ) : (
+                                        <div>My Posts</div>
+                                    )}
+                                </Link>
+                            }
+                        </li>
+                        <li className="mx-1">
+                            <Link to="/createPost">Create Post</Link>
+                        </li>
+                        <li>
+                            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+                            <a href="/" onClick={() => Auth.logout()}>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             );
         } else {
             return (
                 <ul>
                     <li>
-                        <Link to="/signup">
-                            Signup
-                        </Link>
+                        <Link to="/signup">Signup</Link>
                     </li>
                     <li>
-                        <Link to="/login">
-                            Login
-                        </Link>
+                        <Link to="/login">Login</Link>
                     </li>
                 </ul>
             );
@@ -64,7 +57,7 @@ function Nav() {
     return (
         <header>
             <Link to="/">
-                <h1 href='/'>
+                <h1 href="/">
                     <Avatar
                         alt="plant image"
                         src={require("../../assets/Images/sad-plant.png")}
@@ -74,12 +67,9 @@ function Nav() {
                     Propagatorz
                 </h1>
             </Link>
-            <nav>
-                {showNavigation()}
-            </nav>
+            <nav>{showNavigation()}</nav>
         </header>
     );
-
 }
 
 export default Nav;

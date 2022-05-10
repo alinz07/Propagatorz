@@ -15,6 +15,11 @@ function Nav() {
     function showNavigation() {
         if (Auth.loggedIn()) {
             return (
+
+                    <li>
+                        {<Link to="/Home">
+                            My Posts
+                        </Link>}
                 <ul className="flex-row">
                     <li className="mx-1">
                         {
@@ -59,7 +64,7 @@ function Nav() {
     return (
         <header>
             <Link to="/">
-                <h1>
+                <h1 href='/'>
                     <Avatar
                         alt="plant image"
                         src={require("../../assets/Images/sad-plant.png")}

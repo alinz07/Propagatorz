@@ -175,3 +175,9 @@ footer {
         margin: 0 10px;
     }
 }
+
+@media screen and (max-width: 400) {
+    header h1 {
+        font-size: 10px;
+    }
+}

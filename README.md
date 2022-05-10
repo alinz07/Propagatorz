@@ -24,8 +24,13 @@ The login functionality also allows users to keep track of all of the posts they
 
 ## Live Link & Screenshots
 **View the application here:** deployed link to come... <br/>
+
 **View website screenshots here:** <br/>
-Screenshots to come...
+Home Page <br/>
+![Screenshot](./ImagesForReadMe/homepage.png) <br/>
+
+Create Post Page <br/>
+![Screenshot](./ImagesForReadMe/create-post.png) <br/>
 
 
 ## Technologies Used

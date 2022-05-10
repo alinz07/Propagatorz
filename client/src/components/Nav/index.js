@@ -1,10 +1,11 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
 import { useStoreContext } from "../../utils/globalState";
 import { UPDATE_FILTER } from "../../utils/actions";
-import { Grid } from "@mui/material";
+// import Avatar from "@mui/material/Avatar";
+// import { Grid } from "@mui/material";
+import appLogo from '../../assets/Images/sad-plant.png'
 
 function Nav() {
     const [state, dispatch] = useStoreContext();
@@ -44,39 +45,44 @@ function Nav() {
         } else {
             return (
                 <ul>
+
                     <li>
                         <Link to="/signup">Signup</Link>
                     </li>
+
                     <li>
                         <Link to="/login">Login</Link>
                     </li>
+
                 </ul>
             );
         }
     }
 
     return (
-        <Grid container display="flex" wrap="wrap">
-            <header>
-                <Grid item xs={6}>
-                    <Link to="/">
-                        <Avatar
-                            alt="plant image"
-                            src={require("../../assets/Images/sad-plant.png")}
-                            sx={{ width: 80, height: 80 }}
-                            variant="square"
-                        ></Avatar>
-                        <h1 href="/">
-                            Propagatorz
-                        </h1>
-                    </Link>
-                </Grid>
 
-                <Grid item xs={6}>
-                    <nav>{showNavigation()}</nav>
-                </Grid>
-            </header>
-        </Grid>
+        <header>
+
+
+            <Link to="/">
+                {/* <Avatar
+                    alt="plant image"
+                    src={require("../../assets/Images/sad-plant.png")}
+                    sx={{ width: 80, height: 80 }}
+                    variant="square"
+                ></Avatar> */}
+                <div className="heading-container">
+                    <img src={appLogo} alt="plant logo" width="80" />
+                    <h1 href="/">
+                        Propagatorz
+                    </h1>
+                </div>
+            </Link>
+
+            <nav>{showNavigation()}</nav>
+
+        </header>
+
     );
 }
 

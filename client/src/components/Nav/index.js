@@ -51,7 +51,7 @@ function Nav() {
     return (
         <header>
             <Link to="/">
-                <h1>
+                <h1 href='/'>
                     <Avatar
                         alt="plant image"
                         src={require("../../assets/Images/sad-plant.png")}

@@ -50,7 +50,7 @@ const typeDefs = gql`
             picture: String!
         ): Post
         addComment(postId: ID!, commentBody: String!): Post
-        deletePost(_id: String!): Post
+        deletePost(_id: ID!): Post
     }
 `;
 

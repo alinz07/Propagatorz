@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Tooltip } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -25,31 +25,36 @@ const theme = createTheme({
 function PostCard(post) {
     const [state, dispatch] = useStoreContext();
 
+    const [postToDelete, setPostToDelete] = useState("");
+
     const [deletePost] = useMutation(DELETE_POST);
 
-    const deletePostHandler = async (e) => {
-        const postId = e.target.id;
-
-        // answer is string
-        // console.log(typeof postId);
-
-        deleteStatePost(postId);
+    useEffect(() => {
+        if (!postToDelete) {
+            return;
+        }
+        dispatch({
+            type: DELETE_A_POST,
+            _id: postToDelete,
+        });
 
         try {
-            await deletePost({
-                variables: { _id: postId },
+            deletePost({
+                variables: { _id: postToDelete },
             });
-            deleteStatePost(postId);
         } catch (e) {
             console.log(e);
         }
-    };
+    });
 
-    const deleteStatePost = (postId) => {
-        dispatch({
-            type: DELETE_A_POST,
-            _id: postId,
-        });
+    const deletePostHandler = (e) => {
+        if (!e.target.id) {
+            const postId = e.target.parentElement.id;
+            setPostToDelete(postId);
+        } else {
+            const postId = e.target.id;
+            setPostToDelete(postId);
+        }
     };
 
     const {
@@ -93,12 +98,11 @@ function PostCard(post) {
                                             <IconButton
                                                 variant="contained"
                                                 className="delBtn"
+                                                color="secondary"
                                                 id={id}
                                                 onClick={deletePostHandler}
-                                                color="secondary"
                                             >
-                                                {" "}
-                                                <DeleteIcon />
+                                                <DeleteIcon id={id} />
                                             </IconButton>
                                         </Tooltip>
                                     </ThemeProvider>

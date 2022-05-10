@@ -10,8 +10,6 @@ import Auth from "../../utils/auth";
 function CardList() {
     const [state, dispatch] = useStoreContext();
 
-    const { posts } = state;
-
     const { loading, data } = useQuery(QUERY_ALL_POSTS);
 
     useEffect(() => {

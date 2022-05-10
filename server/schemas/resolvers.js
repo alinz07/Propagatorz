@@ -104,9 +104,9 @@ const resolvers = {
         // deletePost: async (parent, { _id }, context) => {
 
         deletePost: async (parent, { _id }) => {
-            // if (context.user) {
-            const postId = mongoose.Types.ObjectId(_id);
-            const deletedPost = await Post.findByIdAndDelete(postId);
+            var postId = await mongoose.Types.ObjectId(_id);
+
+            const deletedPost = await Post.findOneAndDelete({ _id: postId });
 
             return deletedPost;
         },

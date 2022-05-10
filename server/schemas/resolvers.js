@@ -105,7 +105,7 @@ const resolvers = {
 
         deletePost: async (parent, { _id }) => {
             var postId = await mongoose.Types.ObjectId(_id);
-
+            
             const deletedPost = await Post.findOneAndDelete({ _id: postId });
 
             return deletedPost;

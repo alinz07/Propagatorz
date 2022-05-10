@@ -3,7 +3,6 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
-// import Button from '@mui/material/Button';
 import { Grid } from "@mui/material";
 
 function Login(props) {
@@ -35,20 +34,17 @@ function Login(props) {
     };
 
     return (
-        <Grid container display="flex" wrap="wrap" justifyContent="center" className="sign-in-form">
-            <Grid item xs={4} className="test">
-                <Grid item>
-                    <Link to="/signup" className="go-to-text">← Go to Signup</Link>
-                </Grid>
-
-                <Grid item>
-                    <h2 className="sign-in-form-heading">Login</h2>
-                </Grid>
+        <Grid container display="flex" wrap="wrap" justifyContent="center" className='form-container'>
+            <Grid item xs={9} md={7} lg={5} className="sign-in-form">
 
                 <Grid item>
                     <form onSubmit={handleFormSubmit}>
-                        <Grid container>
-                            <Grid item>
+                        <Grid item>
+                            <h2 className="sign-in-form-heading">Login</h2>
+                        </Grid>
+                        <Grid container textAlign="center" justifyContent="center">
+
+                            <Grid item xs={12}>
                                 <label htmlFor="email">Email address:</label>
                                 <input
                                     placeholder="youremail@test.com"
@@ -58,7 +54,7 @@ function Login(props) {
                                     onChange={handleChange}
                                 />
                             </Grid>
-                            <Grid item>
+                            <Grid item xs={12}>
                                 <label htmlFor="pwd">Password:</label>
                                 <input
                                     placeholder="******"
@@ -80,7 +76,13 @@ function Login(props) {
                             </Grid>
                         </Grid>
                     </form>
+
+                    <Grid item>
+                        <Link to="/signup" className="go-to-text">← Go to Signup</Link>
+                    </Grid>
+
                 </Grid >
+
             </Grid>
         </Grid >
     );

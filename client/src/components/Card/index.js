@@ -25,7 +25,7 @@ function PostCard(post) {
                     alt={plantType}
                     height="200"
                     image={picture}
-                    // image={require(`../../assets/homepages/${picture}`)}
+                // image={require(`../../assets/homepages/${picture}`)}
                 />
                 <CardContent>
                     <Grid container alignItems="center">
@@ -49,7 +49,7 @@ function PostCard(post) {
                         </Grid>
                         <Grid pt={1} item xs={12} fontSize="h6.fontSize">
                             {comments.map((comment) => (
-                                <div>
+                                <div key={comment._id}>
                                     <p>{comment.commentBody}</p>
                                     <span>
                                         {comment.username} on{" "}

@@ -119,7 +119,7 @@ db.once('open', async () => {
 
         },
         {
-            title: 'What kind of plant is this?',
+            title: 'How much sun should this plant have?',
             plantType: 'Big Round Leaves',
             description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
             picture: 'https://res.cloudinary.com/dk53zrwwe/image/upload/v1652146501/Plants/plantphoto_eiwbew.webp',
@@ -150,6 +150,34 @@ db.once('open', async () => {
                 {
                     commentBody: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
                     username: "Sara"
+                }
+            ]
+
+        },
+        {
+            title: "Ivy plant isn't climbing",
+            plantType: 'Ivy',
+            description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+            picture: 'https://res.cloudinary.com/dk53zrwwe/image/upload/v1652147266/Plants/ivy_msofma.jpg',
+            username: 'Scott',
+            comments: [
+                {
+                    commentBody: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+                    username: "Sara"
+                }
+            ]
+
+        },
+        {
+            title: "Never flowers",
+            plantType: 'Cactus',
+            description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+            picture: 'https://res.cloudinary.com/dk53zrwwe/image/upload/v1652147378/Plants/cactus_gsivix.jpg',
+            username: 'Sara',
+            comments: [
+                {
+                    commentBody: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+                    username: "Scott"
                 }
             ]
 

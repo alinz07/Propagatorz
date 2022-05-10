@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { useStoreContext } from "../../utils/globalState";
 import { UPDATE_FILTER } from "../../utils/actions";
+import { Grid } from "@mui/material";
 
 function Nav() {
     const [state, dispatch] = useStoreContext();
@@ -55,20 +56,27 @@ function Nav() {
     }
 
     return (
-        <header>
-            <Link to="/">
-                <h1 href="/">
-                    <Avatar
-                        alt="plant image"
-                        src={require("../../assets/Images/sad-plant.png")}
-                        sx={{ width: 80, height: 80 }}
-                        variant="square"
-                    ></Avatar>
-                    Propagatorz
-                </h1>
-            </Link>
-            <nav>{showNavigation()}</nav>
-        </header>
+        <Grid container display="flex" wrap="wrap">
+            <header>
+                <Grid item xs={6}>
+                    <Link to="/">
+                        <Avatar
+                            alt="plant image"
+                            src={require("../../assets/Images/sad-plant.png")}
+                            sx={{ width: 80, height: 80 }}
+                            variant="square"
+                        ></Avatar>
+                        <h1 href="/">
+                            Propagatorz
+                        </h1>
+                    </Link>
+                </Grid>
+
+                <Grid item xs={6}>
+                    <nav>{showNavigation()}</nav>
+                </Grid>
+            </header>
+        </Grid>
     );
 }
 

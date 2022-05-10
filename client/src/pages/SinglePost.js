@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 //import {Link, useParams} from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import {  useQuery } from '@apollo/client';
 import { UPDATE_POST } from '../utils/mutations';
-import { QUERY_ONE_POST } from '../utils/queries';
-import { useStoreContext } from '../utils/globalState';
-import CommentForm from '../components/CommentForm';
-import { Grid } from "@mui/material";
-import PostCard from "../Card";
+import {  QUERY_ONE_POST } from '../utils/queries';
+import {  useStoreContext } from '../utils/globalState';
+import CommentForm from '../components/CommentForm'
 
-const SinglePost = ({ postId }) => {
+const singlePost = () => {
     const [state, dispatch] = useStoreContext();
 
     const { loading, data } = useQuery(QUERY_ONE_POST);
@@ -16,11 +14,11 @@ const SinglePost = ({ postId }) => {
     useEffect(() => {
         if (data) {
             dispatch({
-                type: UPDATE_POST,
+                type:UPDATE_POST,
                 post: data.post
             });
         }
-    }, [data, loading, disaptch]);
+    }, [data,loading,disaptch]);
 
     return (
         <Grid container display="flex" wrap="wrap" justifyContent="center">
@@ -38,9 +36,9 @@ const SinglePost = ({ postId }) => {
                     username={post.username}
                 ></PostCard>
             ))}
-            <CommentForm />
+            <CommentForm/>
         </Grid>
     );
 }
 
-export default SinglePost();
+export default singlePost();

@@ -1,38 +1,45 @@
-import React from 'react';
-import Auth from '../../utils/auth';
-import { Link } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
+import React from "react";
+import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import { useStoreContext } from "../../utils/globalState";
+import { UPDATE_FILTER } from "../../utils/actions";
 
 function Nav() {
+    const [state, dispatch] = useStoreContext();
+
+    function filterPosts() {
+        dispatch({ type: UPDATE_FILTER });
+    }
 
     function showNavigation() {
         if (Auth.loggedIn()) {
             return (
-                <ul>
 
-<<<<<<< HEAD
-                    <li className="mx-1">
-
-                     Posts
-
-=======
                     <li>
                         {<Link to="/Home">
                             My Posts
                         </Link>}
->>>>>>> feature/home-fix
+                <ul className="flex-row">
+                    <li className="mx-1">
+                        {
+                            <Link to="/" onClick={filterPosts}>
+                                {state.postFilter ? (
+                                    <div>All Posts</div>
+                                ) : (
+                                    <div>My Posts</div>
+                                )}
+                            </Link>
+                        }
                     </li>
-                    <li>
-                        <Link to="/createPost">
-                            Create Post
-                        </Link>
+                    <li className="mx-1">
+                        <Link to="/createPost">Create Post</Link>
                     </li>
                     <li>
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
                         <a href="/" onClick={() => Auth.logout()}>
                             Logout
                         </a>
-
                     </li>
                 </ul>
             );
@@ -49,7 +56,6 @@ function Nav() {
                             Login
                         </Link>
                     </li>
-
                 </ul>
             );
         }

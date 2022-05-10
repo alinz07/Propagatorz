@@ -50,7 +50,10 @@ const typeDefs = gql`
             picture: String!
         ): Post
         addComment(postId: ID!, commentBody: String!): Post
+        deletePost(_id: String!): Post
     }
 `;
 
 module.exports = typeDefs;
+
+// deletePost(_id: String!): Post

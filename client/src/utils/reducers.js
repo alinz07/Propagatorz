@@ -1,5 +1,12 @@
 import { useReducer } from "react";
-import { UPDATE_POSTS, UPDATE_USERS, UPDATE_FORMDATA } from "../utils/actions";
+import {
+    UPDATE_POSTS,
+    UPDATE_USERS,
+    UPDATE_FORMDATA,
+    UPDATE_FILTER,
+    UPDATE_LOGGED_IN_USER,
+    DELETE_A_POST,
+} from "../utils/actions";
 
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -20,7 +27,24 @@ export const reducer = (state, action) => {
                 ...state,
                 formData: [...action.formData],
             };
-
+        case UPDATE_FILTER:
+            return {
+                ...state,
+                postFilter: !state.postFilter,
+            };
+        case UPDATE_LOGGED_IN_USER:
+            return {
+                ...state,
+                loggedInUser: action.loggedInUser,
+            };
+        case DELETE_A_POST:
+            let newState = state.posts.filter((post) => {
+                return post._id !== action._id;
+            });
+            return {
+                ...state,
+                posts: newState,
+            };
         default:
             return state;
     }

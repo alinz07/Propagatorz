@@ -1,7 +1,6 @@
 const { User, Post } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
-const mongoose = require("mongoose");
 
 const resolvers = {
     Query: {
@@ -101,14 +100,8 @@ const resolvers = {
 
             throw new AuthenticationError("You need to be logged in.");
         },
-        // deletePost: async (parent, { _id }, context) => {
-
         deletePost: async (parent, { _id }) => {
-            var postId = await mongoose.Types.ObjectId(_id);
-
-            const deletedPost = await Post.findOneAndDelete({ _id: postId });
-
-            return deletedPost;
+            return Post.findByIdAndDelete({ _id });
         },
     },
 };

@@ -6,12 +6,12 @@ import { Grid } from "@mui/material";
 function Footer() {
     return (
         <footer>
-            <Grid container>
-                <Grid item xs={9}>
+            <Grid container columnSpacing={5} display="flex" wrap="wrap">
+                <Grid item xs={12} md={9}>
                     <p>Copyright 2022</p>
                 </Grid>
 
-                <Grid item xs={3}>
+                <Grid item xs={12} md={3} justifyContent="center">
                     <div>
                         <Stack direction='row' spacing={5}>
                             <Avatar sx={{ bgcolor: green[500] }} onClick={(e) => {

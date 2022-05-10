@@ -27,12 +27,12 @@ body {
     font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* .main-wrapper {
+.main-wrapper {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
-} */
+}
 
 header {
     padding: 20px 35px;
@@ -77,21 +77,23 @@ header nav ul li a:hover {
 }
 
 /* Login/Signup and Create Post Forms */
-/* .go-to-text {
+.go-to-text {
     color: var(--light);
     text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    margin-bottom: 40px;
 }
 
 .sign-in-form,
 .create-post-form {
     background-color: var(--med-green);
-    width: 50%;
-    margin: auto;
     margin-top: 30px;
     margin-bottom: 40px;
     padding: 20px;
     border-radius: 5px;
-    width: 700px;
 }
 
 .sign-in-form-heading {
@@ -107,7 +109,6 @@ form input {
 
 form textarea {
     width: 100%;
-    ;
     height: 200px;
 }
 
@@ -131,7 +132,7 @@ button {
 button:hover {
     background-color: var(--light-green);
     border: 1px solid var(--light-green);
-} */
+}
 
 
 /* footer */

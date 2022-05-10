@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import { Link } from "react-router-dom";
+import { Grid } from "@mui/material";
 
 import Auth from "../utils/auth";
 
@@ -50,16 +51,25 @@ const Signup = () => {
     };
 
     return (
-        <main className="sign-in-form">
-            <Link to="/login" className="go-to-text">
-                ← Go to Login
-            </Link>
-            <div>
-                <div>
-                    <h2 className="sign-in-form-heading">Sign Up</h2>
-                    <div>
-                        <form onSubmit={handleFormSubmit}>
-                            <div>
+        <Grid
+            container
+            display="flex"
+            wrap="wrap"
+            justifyContent="center"
+            className="form-container"
+        >
+            <Grid item xs={9} md={7} lg={5} className="sign-in-form">
+                <Grid item>
+                    <form onSubmit={handleFormSubmit}>
+                        <Grid item>
+                            <h2 className="sign-in-form-heading">Sign Up</h2>
+                        </Grid>
+                        <Grid
+                            container
+                            textAlign="center"
+                            justifyContent="center"
+                        >
+                            <Grid item xs={12}>
                                 <label htmlFor="username">Username: </label>
                                 <input
                                     className="form-input"
@@ -70,8 +80,8 @@ const Signup = () => {
                                     value={formState.username}
                                     onChange={handleChange}
                                 />
-                            </div>
-                            <div>
+                            </Grid>
+                            <Grid item xs={12}>
                                 <label htmlFor="email">Email address:</label>
                                 <input
                                     className="form-input"
@@ -82,8 +92,8 @@ const Signup = () => {
                                     value={formState.email}
                                     onChange={handleChange}
                                 />
-                            </div>
-                            <div>
+                            </Grid>
+                            <Grid item xs={12}>
                                 <label htmlFor="password">Password:</label>
                                 <input
                                     className="form-input"
@@ -94,34 +104,21 @@ const Signup = () => {
                                     value={formState.password}
                                     onChange={handleChange}
                                 />
-                            </div>
-                            <button type="submit">Submit</button>
-                        </form>
+                            </Grid>
 
-                        {error && signupError === "usernameError" && (
-                            <div>
-                                Username is already taken, please choose another
-                                and resubmit
-                            </div>
-                        )}
-                        {error && signupError === "emailError" && (
-                            <div>
-                                Email already has an account, please use another
-                                email account and resubmit or select forgot
-                                password?
-                            </div>
-                        )}
-                        {error && signupError === "passError" && (
-                            <div>
-                                Password must be more than 4 characters in
-                                length. Please enter a different password and
-                                resubmit.
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </main>
+                            {error && <div>Signup failed</div>}
+                            <Grid>
+                                <button type="submit">Submit</button>
+                            </Grid>
+                        </Grid>
+                    </form>
+
+                    <Link to="/login" className="go-to-text">
+                        ← Go to Login
+                    </Link>
+                </Grid>
+            </Grid>
+        </Grid>
     );
 };
 

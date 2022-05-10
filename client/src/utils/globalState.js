@@ -9,6 +9,8 @@ const StoreProvider = ({ value = [], ...props }) => {
         posts: [],
         users: [],
         formData: "",
+        postFilter: false,
+        loggedInUser: "",
     });
     // use this to confirm it works!
     console.log(state);

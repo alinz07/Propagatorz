@@ -1,7 +1,7 @@
-
-const { User, Post } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
+const { User, Post } = require("../models");
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
+const mongoose = require("mongoose");
 
 const resolvers = {
     Query: {
@@ -26,7 +26,6 @@ const resolvers = {
             return User.findOne({ username })
                 .select("-password")
                 .populate("posts");
-
         },
         // get all posts with option to get all posts by username
         posts: async (parent, { username }) => {
@@ -86,7 +85,14 @@ const resolvers = {
             if (context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
                     { _id: postId },
-                    { $push: { comments: { commentBody, username: context.user.username } } },
+                    {
+                        $push: {
+                            comments: {
+                                commentBody,
+                                username: context.user.username,
+                            },
+                        },
+                    },
                     { new: true }
                 );
 
@@ -94,6 +100,15 @@ const resolvers = {
             }
 
             throw new AuthenticationError("You need to be logged in.");
+        },
+        // deletePost: async (parent, { _id }, context) => {
+
+        deletePost: async (parent, { _id }) => {
+            var postId = await mongoose.Types.ObjectId(_id);
+
+            const deletedPost = await Post.findOneAndDelete({ _id: postId });
+
+            return deletedPost;
         },
     },
 };

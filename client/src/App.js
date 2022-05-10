@@ -9,7 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { StoreProvider } from "./utils/globalState";
 
-import SinglePost from "./pages/SinglePost";
+// import SinglePost from "./pages/SinglePost";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -63,7 +63,6 @@ function App() {
                         <Footer />
                     </StoreProvider>
                 </div>
-
             </Router>
         </ApolloProvider>
     );

@@ -1,3 +1,9 @@
+.cardPic {
+    object-fit: contain !important;
+}
+.delBtn {
+    background: #a7c957 !important;
+}
 :root {
     --main-green: rgba(56, 102, 65, 1);
     --med-green: rgba(106, 153, 78, 1);

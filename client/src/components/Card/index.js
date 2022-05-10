@@ -25,7 +25,7 @@ function PostCard(post) {
                     alt={plantType}
                     height="200"
                     image={picture}
-                    // image={require(`../../assets/homepages/${picture}`)}
+                // image={require(`../../assets/homepages/${picture}`)}
                 />
                 <CardContent>
                     <Grid container alignItems="center">

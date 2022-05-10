@@ -114,12 +114,14 @@ export const DELETE_POST = gql`
 `;
 
 export const ADD_COMMENT = gql`
-    mutation addComment($post: Int) {
-        addComment(comment: $comment, description: $description) {
-            token
-            comment {
+    mutation addComment($postId: ID!, $commentBody: String!) {
+        addComment(postId: $postId, commentBody: $commentBody) {
+            _id
+            title
+            commentCount
+            comments {
                 _id
-                description
+                commentBody
             }
         }
     }

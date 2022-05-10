@@ -58,6 +58,7 @@ function Nav() {
                     src={require("../../assets/Images/sad-plant.jpg")}
                     sx={{ width: 50, height: 50 }}
                     variant="square"
+                    onClick={() => }
                 ></Avatar>
                 Propagatorz
 

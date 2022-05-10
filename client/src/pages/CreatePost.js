@@ -137,9 +137,12 @@ const CreatePost = () => {
                     <div>{errorMessage}</div>
                 )}
 
-                <Button type="submit" variant="contained">
-                    Submit
-                </Button>
+                  <a href='/'>
+                    <Button type="submit" variant="contained">
+                        Submit
+                    </Button>
+                  </a>
+                    
 
                 {loadingMessage && <div>{loadingMessage}</div>}
 

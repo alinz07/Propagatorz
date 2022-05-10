@@ -21,9 +21,9 @@ function Nav() {
                             {
                                 <Link to="/" onClick={filterPosts}>
                                     {state.postFilter ? (
-                                        <div>All Posts</div>
+                                        'All Posts'
                                     ) : (
-                                        <div>My Posts</div>
+                                        'My Posts'
                                     )}
                                 </Link>
                             }

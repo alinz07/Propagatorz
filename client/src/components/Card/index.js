@@ -80,7 +80,7 @@ function PostCard(post) {
     return (
         <Grid item xs={12} sm={5} md={3} lg={2} p={0} m={3}>
             <Card id="react-card">
-                <Tooltip title="click to view post details">
+                <Tooltip title="click image to view post details and leave a comment">
                     <Link to={{ pathname: `/singlePost/:${id}` }}>
                         <CardMedia
                             component="img"
@@ -91,6 +91,7 @@ function PostCard(post) {
                         />
                     </Link>
                 </Tooltip>
+
                 <CardContent>
                     <Grid container alignItems="center" justifyContent="center">
                         <Grid

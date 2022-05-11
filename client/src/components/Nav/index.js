@@ -5,7 +5,7 @@ import { useStoreContext } from "../../utils/globalState";
 import { UPDATE_FILTER } from "../../utils/actions";
 // import Avatar from "@mui/material/Avatar";
 // import { Grid } from "@mui/material";
-import appLogo from '../../assets/Images/sad-plant.png'
+import appLogo from "../../assets/Images/sad-plant.png";
 
 function Nav() {
     const [state, dispatch] = useStoreContext();
@@ -22,11 +22,9 @@ function Nav() {
                         <li className="mx-1">
                             {
                                 <Link to="/" onClick={filterPosts}>
-                                    {state.postFilter ? (
-                                        'All Posts'
-                                    ) : (
-                                        'My Posts'
-                                    )}
+                                    {state.postFilter
+                                        ? "All Posts"
+                                        : "My Posts"}
                                 </Link>
                             }
                         </li>
@@ -45,7 +43,6 @@ function Nav() {
         } else {
             return (
                 <ul>
-
                     <li>
                         <Link to="/signup">Signup</Link>
                     </li>
@@ -53,17 +50,13 @@ function Nav() {
                     <li>
                         <Link to="/login">Login</Link>
                     </li>
-
                 </ul>
             );
         }
     }
 
     return (
-
         <header>
-
-
             <Link to="/">
                 {/* <Avatar
                     alt="plant image"
@@ -73,16 +66,12 @@ function Nav() {
                 ></Avatar> */}
                 <div className="heading-container">
                     <img src={appLogo} alt="plant logo" width="80" />
-                    <h1 href="/">
-                        Propagatorz
-                    </h1>
+                    <h1 href="/">Propagatorz</h1>
                 </div>
             </Link>
 
             <nav>{showNavigation()}</nav>
-
         </header>
-
     );
 }
 

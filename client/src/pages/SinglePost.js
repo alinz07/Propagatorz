@@ -1,56 +1,58 @@
-import React, { useEffect, useState } from 'react';
-//import {Link, useParams} from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { UPDATE_POST } from '../utils/mutations';
-import { QUERY_ONE_POST } from '../utils/queries';
-import { useStoreContext } from '../utils/globalState';
-import CommentForm from '../components/CommentForm';
-import PostCard from '../components/Card';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_ALL_POSTS } from "../utils/queries";
+import CommentForm from "../components/CommentForm";
 import { Grid } from "@mui/material";
+import PostCard from "../components/Card";
 
-const SinglePost = () => {
-    const [state, dispatch] = useStoreContext();
+function SinglePost() {
+    const { id } = useParams();
+    const postId = id.substring(1);
+    const { loading, data } = useQuery(QUERY_ALL_POSTS);
 
-    const { loading, data } = useQuery(QUERY_ONE_POST);
+    const [currentPost, setCurrentPost] = useState("");
 
     useEffect(() => {
-        if (data) {
-            dispatch({
-                type: UPDATE_POST,
-                post: data.post
-            });
+        if (!data) {
+            return;
         }
-    }, [data, loading, dispatch]);
+        setCurrentPost(data.posts.find((post) => post._id === postId));
+    }, [data, postId]);
 
-    // function filterPosts() {
-    //     if (Auth.loggedIn() && state.postFilter && state.loggedInUser)
-    //         return state.posts.filter(
-    //             (post) => post.username === state.loggedInUser
-    //         );
-    //     else {
-    //         return state.posts;
-    //     }
-    // }
+    useEffect(() => {
+        if (!currentPost) {
+            return;
+        }
+        console.log(currentPost.comments);
+    }, [currentPost, setCurrentPost]);
 
     return (
-        <Grid container display="flex" wrap="wrap" justifyContent="center">
-            {/* {state.post.map((post) => (
-                <PostCard
-                    key={post._id}
-                    id={post._id}
-                    title={post.title}
-                    commentCount={post.commentCount}
-                    comments={post.comments}
-                    createdAt={post.createdAt}
-                    description={post.description}
-                    picture={post.picture}
-                    plantType={post.plantType}
-                    username={post.username}
-                ></PostCard>
-            ))} */}
-            <CommentForm />
+        <Grid>
+            {data ? (
+                <Grid
+                    container
+                    display="flex"
+                    wrap="wrap"
+                    justifyContent="center"
+                >
+                    <PostCard
+                        id={currentPost._id}
+                        title={currentPost.title}
+                        commentCount={currentPost.commentCount}
+                        comments={currentPost.comments}
+                        createdAt={currentPost.createdAt}
+                        description={currentPost.description}
+                        picture={currentPost.picture}
+                        plantType={currentPost.plantType}
+                        username={currentPost.username}
+                    ></PostCard>
+                    <CommentForm />
+                </Grid>
+            ) : null}
+            {loading ? <Grid>...loading</Grid> : null}
         </Grid>
     );
 }
 
-export default SinglePost();
+export default SinglePost;

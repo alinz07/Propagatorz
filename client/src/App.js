@@ -9,7 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { StoreProvider } from "./utils/globalState";
 
-// import SinglePost from "./pages/SinglePost";
+import SinglePost from "./pages/SinglePost";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -48,11 +48,11 @@ function App() {
                             <Route exact path="/" element={<Home />} />
                             <Route exact path="/login" element={<Login />} />
                             <Route exact path="/signup" element={<Signup />} />
-                            {/* <Route
+                            <Route
                                 exact
                                 path="/singlePost/:id"
-                                component={SinglePost}
-                            /> */}
+                                element={<SinglePost />}
+                            />
                             <Route
                                 exact
                                 path="/createPost"

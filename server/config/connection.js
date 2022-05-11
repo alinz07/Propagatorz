@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/propagatorz", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-
-module.exports = mongoose.connection;
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/propagatorz',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );

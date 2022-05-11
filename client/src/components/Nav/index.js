@@ -1,7 +1,6 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
 import { useStoreContext } from "../../utils/globalState";
 import { UPDATE_FILTER } from "../../utils/actions";
 import { Tooltip, Button } from "@mui/material";
@@ -73,6 +72,7 @@ function Nav() {
                     <li>
                         <Link to="/signup">Signup</Link>
                     </li>
+
                     <li>
                         <Link to="/login">Login</Link>
                     </li>
@@ -84,16 +84,18 @@ function Nav() {
     return (
         <header>
             <Link to="/">
-                <h1 href="/">
-                    <Avatar
-                        alt="plant image"
-                        src={require("../../assets/Images/sad-plant.png")}
-                        sx={{ width: 80, height: 80 }}
-                        variant="square"
-                    ></Avatar>
-                    Propagatorz
-                </h1>
+                {/* <Avatar
+                    alt="plant image"
+                    src={require("../../assets/Images/sad-plant.png")}
+                    sx={{ width: 80, height: 80 }}
+                    variant="square"
+                ></Avatar> */}
+                <div className="heading-container">
+                    <img src={appLogo} alt="plant logo" width="80" />
+                    <h1 href="/">Propagatorz</h1>
+                </div>
             </Link>
+
             <nav>{showNavigation()}</nav>
         </header>
     );

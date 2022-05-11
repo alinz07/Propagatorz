@@ -40,24 +40,33 @@ body {
     justify-content: flex-start;
 }
 
+/* header and nav */
 header {
     padding: 20px 35px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     background-color: var(--main-green);
 }
 
+.heading-container {
+    display: flex;
+    align-items: center;
+}
+
 header h1 {
     font-weight: bold;
-    font-size: 36px;
-    color: white;
-    margin: 0;
+    font-size: 40px;
+    color: var(--light);
     display: inline;
+    margin-left: 10px;
 }
 
 header a {
     text-decoration: none;
+    color: var(--light);
 }
 
 header nav {
@@ -68,7 +77,6 @@ header nav ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
     list-style: none;
 }
 
@@ -80,7 +88,6 @@ a {
     padding: 10px;
     margin: 10px;
     color: white;
-    background-color: #39302b;
 }
 
 /* Login/Signup and Create Post Forms */
@@ -149,4 +156,30 @@ footer {
     line-height: 40px;
     display: flex;
     margin-top: auto;
+}
+
+/* Media Query for Nav and Footer */
+@media screen and (max-width: 725px) {
+    header {
+        display: block;
+    }
+
+    .heading-container {
+        justify-content: center;
+    }
+
+    header nav ul {
+        padding-top: 10px;
+        justify-content: space-around;
+    }
+
+    header nav ul li a {
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 400) {
+    header h1 {
+        font-size: 10px;
+    }
 }

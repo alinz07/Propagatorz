@@ -45,7 +45,7 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <Router>
-                <div>
+                <div className="main-wrapper">
                     <StoreProvider>
                         <Nav />
                         <Routes>
@@ -55,7 +55,7 @@ function App() {
                             {/* <Route
                                 exact
                                 path="/singlePost/:id"
-                                component={SinglePost}
+                                element={<SinglePost />}
                             /> */}
                             <Route
                                 exact
@@ -67,7 +67,6 @@ function App() {
                         <Footer />
                     </StoreProvider>
                 </div>
-
             </Router>
         </ApolloProvider>
     );

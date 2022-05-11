@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
-import { Button } from '@mui/material';
+import { Grid } from "@mui/material";
 
 const CreatePost = () => {
     const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
@@ -55,11 +55,10 @@ const CreatePost = () => {
 
     // form input handler
     function handleChange(e) {
-        if (e.target.name === 'title' || e.target.name === 'plantType' || e.target.name === 'description') {
-            if (!e.target.value.length) {
-                setErrorMessage(`${e.target.name} is required.`)
-            }
-        } else {
+        if (!e.target.value.length) {
+            setErrorMessage(`${e.target.name} is required.`)
+        }
+        else {
             setErrorMessage('');
         }
 
@@ -102,52 +101,63 @@ const CreatePost = () => {
     }
 
     return (
-        <section>
-            <h2>Submit a plant help form</h2>
+        <Grid container display="flex" wrap="wrap" justifyContent="center" className='form-container'>
+            <Grid item xs={9} md={9} lg={7} xl={5} className="create-post-form">
 
-            <form onSubmit={handleFormSubmit}>
+                <Grid item>
+                    <h2 className="sign-in-form-heading">Submit a plant help form</h2>
+                </Grid>
 
-                <div>
-                    <label htmlFor="title">Title:</label>
-                    <input type="text" onBlur={handleChange} name="title"></input>
-                </div>
+                <Grid item>
+                    <form onSubmit={handleFormSubmit}>
 
-                <div>
-                    <label htmlFor="plantType">Plant Name:</label>
-                    <input type="text" onBlur={handleChange} name="plantType"></input>
-                </div>
+                        <Grid container textAlign="left" justifyContent="center">
 
-                <div>
-                    <label htmlFor="description">Description:</label>
-                    <textarea
-                        name="description"
-                        placeholder=""
-                        className=""
-                        onBlur={handleChange}
-                    ></textarea>
-                </div>
+                            <Grid item xs={12}>
+                                <label htmlFor="title">Title:</label>
+                                <input type="text" onBlur={handleChange} name="title"></input>
+                            </Grid>
 
-                <div>
-                    <label htmlFor="picture">Upload a photo:</label>
-                    <input type="file" onChange={(event) => setImageSelected(event.target.files[0])} name="picture"></input>
-                    {imageSelected && <img src={preview} alt='upload' width='400px' />}
-                </div>
+                            <Grid item xs={12}>
+                                <label htmlFor="plantType">Plant Name:</label>
+                                <input type="text" onBlur={handleChange} name="plantType"></input>
+                            </Grid>
 
-                {errorMessage && (
-                    <div>{errorMessage}</div>
-                )}
+                            <Grid item xs={12}>
+                                <label htmlFor="description">Description:</label>
+                                <textarea
+                                    name="description"
+                                    placeholder=""
+                                    className=""
+                                    onBlur={handleChange}
+                                ></textarea>
+                            </Grid>
 
-                <Button type="submit" variant="contained">
-                    Submit
-                </Button>
+                            <Grid item xs={12}>
+                                <label htmlFor="picture">Upload a photo:</label>
+                                <input type="file" onChange={(event) => setImageSelected(event.target.files[0])} name="picture"></input>
+                                {imageSelected && <img src={preview} alt='upload' width='400px' />}
+                            </Grid>
 
-                {loadingMessage && <div>{loadingMessage}</div>}
+                            {errorMessage && (
+                                <div className='error-message'>{errorMessage}</div>
+                            )}
 
-                {error && <div>Something went wrong...</div>}
+                            <Grid>
+                                <button type="submit">
+                                    Submit
+                                </button>
+                            </Grid>
 
+                            {loadingMessage && <div>{loadingMessage}</div>}
 
-            </form>
-        </section>
+                            {error && <div className='error-message'>Something went wrong...</div>}
+
+                        </Grid>
+                    </form>
+                </Grid>
+            </Grid>
+        </Grid>
     );
 };
 

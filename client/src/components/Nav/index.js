@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { useStoreContext } from "../../utils/globalState";
 import { UPDATE_FILTER } from "../../utils/actions";
+import { Tooltip, Button } from "@mui/material";
 
 function Nav() {
     const [state, dispatch] = useStoreContext();
@@ -19,23 +20,49 @@ function Nav() {
                     <ul className="flex-row">
                         <li className="mx-1">
                             {
-                                <Link to="/" onClick={filterPosts}>
+                                <Link
+                                    to="/"
+                                    onClick={filterPosts}
+                                    id="filter-posts"
+                                >
                                     {state.postFilter ? (
-                                        <div>All Posts</div>
+                                        <Button
+                                            id="nav-btn"
+                                            variant="contained"
+                                        >
+                                            <Tooltip title="View all posts">
+                                                <div>All Posts</div>
+                                            </Tooltip>
+                                        </Button>
                                     ) : (
-                                        <div>My Posts</div>
+                                        <Button
+                                            id="nav-btn"
+                                            variant="contained"
+                                        >
+                                            <Tooltip title="View only my posts">
+                                                <div>My Posts</div>
+                                            </Tooltip>
+                                        </Button>
                                     )}
                                 </Link>
                             }
                         </li>
                         <li className="mx-1">
-                            <Link to="/createPost">Create Post</Link>
+                            <Button id="nav-btn" variant="contained">
+                                <Tooltip title="Create a post">
+                                    <Link to="/createPost">Create Post</Link>
+                                </Tooltip>
+                            </Button>
                         </li>
                         <li>
                             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                            <a href="/" onClick={() => Auth.logout()}>
-                                Logout
-                            </a>
+                            <Button id="nav-btn" variant="contained">
+                                <Tooltip title="Logout">
+                                    <a href="/" onClick={() => Auth.logout()}>
+                                        Logout
+                                    </a>
+                                </Tooltip>
+                            </Button>
                         </li>
                     </ul>
                 </div>

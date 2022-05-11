@@ -10,6 +10,7 @@ import { DELETE_POST } from "../../utils/mutations";
 import { DELETE_A_POST } from "../../utils/actions";
 import { useMutation } from "@apollo/client";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -57,6 +58,13 @@ function PostCard(post) {
         }
     };
 
+    const page = window.location.toString();
+    let renderDelIcon = true;
+
+    if (page.includes("singlePost")) {
+        renderDelIcon = false;
+    }
+
     const {
         id,
         title,
@@ -70,18 +78,29 @@ function PostCard(post) {
     } = post;
 
     return (
-        <Grid item xs={12} md={4} lg={2} p={0}>
+        <Grid item xs={12} sm={5} md={3} lg={2} p={0} m={3}>
             <Card id="react-card">
-                <CardMedia
-                    component="img"
-                    alt={plantType}
-                    height="200"
-                    image={picture}
-                    className="cardPic"
-                />
+                <Tooltip title="click to view post details">
+                    <Link to={{ pathname: `/singlePost/:${id}` }}>
+                        <CardMedia
+                            component="img"
+                            alt={plantType}
+                            height="200"
+                            image={picture}
+                            className="cardPic"
+                        />
+                    </Link>
+                </Tooltip>
                 <CardContent>
-                    <Grid container alignItems="center">
-                        <Grid fontSize="h5.fontSize" p={2} pb={1} item xs={12}>
+                    <Grid container alignItems="center" justifyContent="center">
+                        <Grid
+                            text-align="center"
+                            fontSize="h5.fontSize"
+                            p={2}
+                            pb={1}
+                            item
+                            xs={12}
+                        >
                             {title}
                         </Grid>
                         <Grid fontSize="h6.fontSize" p={2} pb={1} item xs={12}>
@@ -91,7 +110,7 @@ function PostCard(post) {
                             <Grid item xs={8}>
                                 {createdAt}
                             </Grid>
-                            {username === state.loggedInUser && (
+                            {username === state.loggedInUser && renderDelIcon && (
                                 <Grid item xs={4} p={0}>
                                     <ThemeProvider theme={theme}>
                                         <Tooltip title="Delete my post">
@@ -119,15 +138,16 @@ function PostCard(post) {
                             <div>{commentCount} comments</div>
                         </Grid>
                         <Grid pt={1} item xs={12}>
-                            {comments.map((comment) => (
-                                <div key={comment._id}>
-                                    <p>{comment.commentBody}</p>
-                                    <span>
-                                        {comment.username} on{" "}
-                                        {comment.createdAt}
-                                    </span>
-                                </div>
-                            ))}
+                            {comments &&
+                                comments.map((comment) => (
+                                    <div key={comment._id}>
+                                        <p>{comment.commentBody}</p>
+                                        <span>
+                                            {comment.username} on{" "}
+                                            {comment.createdAt}
+                                        </span>
+                                    </div>
+                                ))}
                         </Grid>
                     </Grid>
                 </CardContent>

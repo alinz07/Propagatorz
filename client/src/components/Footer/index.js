@@ -1,6 +1,6 @@
 import React from "react";
-import { Avatar, Stack } from "@mui/material";
-import { green } from '@mui/material/colors';
+import { Avatar, Stack, Tooltip } from "@mui/material";
+import { green } from "@mui/material/colors";
 import { Grid } from "@mui/material";
 import { left } from "@popperjs/core";
 
@@ -13,42 +13,71 @@ function Footer() {
                 </Grid>
 
                 <Grid item xs={12} sm={6} md={3} justifyContent="center">
-                        <Stack direction='row' spacing={1}>
+                    <Stack direction="row" spacing={1}>
+                        <Grid item xs={3}>
+                            <Tooltip title="Visit Tony's GitHub">
+                                <Avatar
+                                    id="avatar"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.location.href =
+                                            "https://github.com/alinz07";
+                                    }}
+                                >
+                                    T
+                                </Avatar>
+                            </Tooltip>
+                        </Grid>
 
-                            <Grid item xs={3}>
-                                <Avatar sx={{ bgcolor: green[500] }} onClick={(e) => {
-                                    e.preventDefault();
-                                    window.location.href = 'https://github.com/alinz07'
-                                }}>T</Avatar>
-                            </Grid>
+                        <Grid item xs={3}>
+                            <Tooltip title="Visit Chris's GitHub">
+                                <Avatar
+                                    id="avatar"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.location.href =
+                                            "https://github.com/Chris-McLeod2";
+                                    }}
+                                >
+                                    Ch
+                                </Avatar>
+                            </Tooltip>
+                        </Grid>
 
-                            <Grid item xs={3}>
-                                <Avatar sx={{ bgcolor: green[500] }} onClick={(e) => {
-                                    e.preventDefault();
-                                    window.location.href = 'https://github.com/Chris-McLeod2'
-                                }}>Ch</Avatar>
-                            </Grid>
+                        <Grid item xs={3}>
+                            <Tooltip title="Visit Lindsey's GitHub">
+                                <Avatar
+                                    id="avatar"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.location.href =
+                                            "https://github.com/lindseymiller2567";
+                                    }}
+                                >
+                                    L
+                                </Avatar>
+                            </Tooltip>
+                        </Grid>
 
-                            <Grid item xs={3}>
-                                <Avatar sx={{ bgcolor: green[500] }} onClick={(e) => {
-                                    e.preventDefault();
-                                    window.location.href = 'https://github.com/lindseymiller2567'
-                                }}>L</Avatar>
-                            </Grid>
-
-                            <Grid item xs={3}>
-                                <Avatar sx={{ bgcolor: green[500] }} onClick={(e) => {
-                                    e.preventDefault();
-                                    window.location.href = 'https://github.com/ColeVibes'
-                                }}>C</Avatar>
-                            </Grid>
-
-                        </Stack>
+                        <Grid item xs={3}>
+                            <Tooltip title="Visit Cole's GitHub">
+                                <Avatar
+                                    id="avatar"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.location.href =
+                                            "https://github.com/ColeVibes";
+                                    }}
+                                >
+                                    C
+                                </Avatar>
+                            </Tooltip>
+                        </Grid>
+                    </Stack>
                 </Grid>
+            </Grid>
+        </footer>
+    );
+}
 
-            </Grid >
-        </footer >
-    )
-};
-
-export default Footer
+export default Footer;

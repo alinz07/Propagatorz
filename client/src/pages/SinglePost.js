@@ -5,6 +5,8 @@ import { QUERY_ALL_POSTS } from "../utils/queries";
 import CommentForm from "../components/CommentForm";
 import { Grid } from "@mui/material";
 import PostCard from "../components/Card";
+import UpdateForm from "../components/UpdateForm";
+import Auth from "../utils/auth";
 
 function SinglePost() {
     const { id } = useParams();
@@ -24,7 +26,6 @@ function SinglePost() {
         if (!currentPost) {
             return;
         }
-        console.log(currentPost.comments);
     }, [currentPost, setCurrentPost]);
 
     return (
@@ -36,6 +37,7 @@ function SinglePost() {
                     wrap="wrap"
                     justifyContent="center"
                 >
+                    {Auth.loggedIn() && <UpdateForm postId={currentPost._id} />}
                     <PostCard
                         id={currentPost._id}
                         title={currentPost.title}
@@ -47,7 +49,7 @@ function SinglePost() {
                         plantType={currentPost.plantType}
                         username={currentPost.username}
                     ></PostCard>
-                    <CommentForm />
+                    <CommentForm postId={currentPost._id} />
                 </Grid>
             ) : null}
             {loading ? <Grid>...loading</Grid> : null}

@@ -75,23 +75,19 @@ export const ADD_POST = gql`
 
 export const UPDATE_POST = gql`
     mutation updatePost(
-        $title: String!
-        $plantType: String!
-        $description: String!
-        $picture: String!
-        $createdAt: Date!
-        $username: String!
+        $postId: ID!
+        $title: String
+        $plantType: String
+        $description: String
     ) {
         updatePost(
+            postId: $postId
             title: $title
             plantType: $plantType
             description: $description
-            picture: $picture
-            createdAt: $createdAt
-            username: $username
         ) {
-            token
             Post {
+                _id
                 title
                 plantType
                 decription

@@ -1,11 +1,3 @@
-.cardPic {
-    object-fit: contain !important;
-}
-
-.delBtn {
-    background: #a7c957 !important;
-}
-
 :root {
     --main-green: rgba(56, 102, 65, 1);
     --med-green: rgba(106, 153, 78, 1);
@@ -35,6 +27,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
+    background-color: var(--light);
 }
 
 /* header and nav */
@@ -85,6 +78,58 @@ header nav ul li a {
 
 header nav ul li a:hover {
     border-bottom: 3px solid var(--light);
+}
+
+/* Cards */
+.cardlist-container {
+    background-color: var(--light);
+}
+#react-card {
+    box-shadow: 1px 1px 1px 1px floralwhite;
+}
+.cardPic {
+    object-fit: contain !important;
+}
+
+.delBtn {
+    background: var(--red) !important;
+}
+#card-media {
+    background-color: var(--light-green);
+}
+.css-46bh2p-MuiCardContent-root:last-child {
+    padding: 0 !important;
+}
+#card-title {
+    font-size: 1.75em;
+    font-family: cursive;
+}
+#card-section-one,
+#card-section-three {
+    background-color: #c3c3d2;
+}
+#card-section-two {
+    border-bottom: 1px solid #39302b;
+    border-top: 1px solid #39302b;
+}
+#card-section-one > *,
+#card-section-two,
+#comment-count {
+    text-align: center;
+}
+#card-section-two > * {
+    padding: 10px;
+}
+#plant-type {
+    font-family: cursive;
+    color: var(--red);
+}
+#comment-body,
+#post-description {
+    text-align: left;
+}
+#chip:hover {
+    cursor: pointer;
 }
 
 /* Login/Signup and Create Post Forms */
@@ -153,6 +198,13 @@ footer {
     line-height: 40px;
     display: flex;
     margin-top: auto;
+}
+
+#avatar {
+    background-color: var(--red);
+}
+#avatar:hover {
+    cursor: pointer;
 }
 
 /* Media Query for Nav and Footer */

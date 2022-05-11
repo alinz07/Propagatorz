@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Tooltip } from "@mui/material";
+import { Chip, Grid, Tooltip } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -15,9 +15,12 @@ import { Link } from "react-router-dom";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#39302B",
+            main: "#6F4E37",
         },
         secondary: {
+            main: "#A7C957",
+        },
+        info: {
             main: "#BC4749",
         },
     },
@@ -78,77 +81,138 @@ function PostCard(post) {
     } = post;
 
     return (
-        <Grid item xs={12} sm={5} md={3} lg={2} p={0} m={3}>
+        <Grid item xs={12} sm={5} md={3} lg={2} p={0} m={1}>
             <Card id="react-card">
-                <Tooltip title="click image to view post details and leave a comment">
-                    <Link to={{ pathname: `/singlePost/:${id}` }}>
-                        <CardMedia
-                            component="img"
-                            alt={plantType}
-                            height="200"
-                            image={picture}
-                            className="cardPic"
-                        />
-                    </Link>
-                </Tooltip>
+                <CardMedia
+                    component="img"
+                    alt={plantType}
+                    height="200"
+                    image={picture}
+                    className="cardPic"
+                    id="card-media"
+                />
 
                 <CardContent>
-                    <Grid container alignItems="center" justifyContent="center">
-                        <Grid
-                            text-align="center"
-                            fontSize="h5.fontSize"
-                            p={2}
-                            pb={1}
-                            item
-                            xs={12}
-                        >
-                            {title}
-                        </Grid>
-                        <Grid fontSize="h6.fontSize" p={2} pb={1} item xs={12}>
-                            {username}
-                        </Grid>
-                        <Grid item xs={12} container alignItems="center">
-                            <Grid item xs={8}>
-                                {createdAt}
+                    <Grid
+                        container
+                        alignItems="center"
+                        justifyContent="center"
+                        m={0}
+                    >
+                        <Grid item container id="card-section-one" pb={3}>
+                            <Grid id="card-title" p={2} pb={0} item xs={12}>
+                                {title}
                             </Grid>
+                            <Grid
+                                fontSize="subtitle1"
+                                pt={1}
+                                pb={1}
+                                item
+                                xs={12}
+                            >
+                                by {username} on {createdAt}
+                            </Grid>
+                        </Grid>
+                        <Grid item container id="card-section-two" p={0}>
+                            <Grid
+                                item
+                                xs={12}
+                                fontSize="h6.fontSize"
+                                id="plant-type"
+                                fontWeight="600"
+                            >
+                                Species: {plantType}
+                            </Grid>
+                            <Grid
+                                item
+                                xs={12}
+                                fontSize="subtitle1.fontSize"
+                                id="post-description"
+                            >
+                                {description}
+                            </Grid>
+
                             {username === state.loggedInUser && renderDelIcon && (
-                                <Grid item xs={4} p={0}>
-                                    <ThemeProvider theme={theme}>
-                                        <Tooltip title="Delete my post">
-                                            <IconButton
-                                                variant="contained"
-                                                className="delBtn"
-                                                color="secondary"
-                                                id={id}
-                                                onClick={deletePostHandler}
-                                            >
-                                                <DeleteIcon id={id} />
-                                            </IconButton>
-                                        </Tooltip>
-                                    </ThemeProvider>
+                                <Grid
+                                    item
+                                    xs={12}
+                                    container
+                                    alignItems="center"
+                                    justifyContent="center"
+                                    id="delete-container"
+                                >
+                                    <Grid item xs={4} p={0}>
+                                        <ThemeProvider theme={theme}>
+                                            <Tooltip title="Delete my post">
+                                                <IconButton
+                                                    variant="contained"
+                                                    className="delBtn"
+                                                    color="secondary"
+                                                    id={id}
+                                                    onClick={deletePostHandler}
+                                                >
+                                                    <DeleteIcon id={id} />
+                                                </IconButton>
+                                            </Tooltip>
+                                        </ThemeProvider>
+                                    </Grid>
                                 </Grid>
                             )}
                         </Grid>
-                        <Grid mt={5} p={2} item xs={12} fontSize="h5.fontSize">
-                            <div>{plantType}</div>
-                        </Grid>
-                        <Grid pt={1} item xs={12} fontSize="h6.fontSize">
-                            <div>{description}</div>
-                        </Grid>
-                        <Grid pt={1} item xs={12}>
-                            <div>{commentCount} comments</div>
-                        </Grid>
-                        <Grid pt={1} item xs={12}>
-                            {comments &&
-                                comments.map((comment) => (
-                                    <div key={comment._id}>
-                                        <p>{comment.commentBody}</p>
-                                        <span>
+                        <Grid
+                            item
+                            container
+                            id="card-section-three"
+                            fontSize="body2"
+                        >
+                            <Grid
+                                pt={2}
+                                item
+                                xs={12}
+                                id="comment-count"
+                                fontWeight="medium"
+                            >
+                                {commentCount} comments
+                            </Grid>
+                            <Grid
+                                item
+                                xs={12}
+                                container
+                                justifyContent="center"
+                            >
+                                {comments &&
+                                    comments.map((comment) => (
+                                        <Grid
+                                            id="comment-body"
+                                            item
+                                            key={comment._id}
+                                            p={1}
+                                        >
+                                            {comment.commentBody} -
                                             {comment.username} on{" "}
                                             {comment.createdAt}
-                                        </span>
-                                    </div>
-                                ))}
+                                        </Grid>
+                                    ))}
+                                {renderDelIcon && state.loggedInUser && (
+                                    <Grid item p={2}>
+                                        <ThemeProvider theme={theme}>
+                                            <Tooltip title="Leave a lovely comment">
+                                                <Link
+                                                    to={{
+                                                        pathname: `/singlePost/:${id}`,
+                                                    }}
+                                                >
+                                                    <Chip
+                                                        label="Comment"
+                                                        color="primary"
+                                                        id="chip"
+                                                    />
+                                                </Link>
+                                            </Tooltip>
+                                        </ThemeProvider>
+                                    </Grid>
+                                )}
+                            </Grid>
                         </Grid>
                     </Grid>
                 </CardContent>

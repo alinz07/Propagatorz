@@ -86,15 +86,13 @@ export const UPDATE_POST = gql`
             plantType: $plantType
             description: $description
         ) {
-            Post {
-                _id
-                title
-                plantType
-                decription
-                picture
-                createdAt
-                username
-            }
+            _id
+            title
+            plantType
+            decription
+            picture
+            createdAt
+            username
         }
     }
 `;

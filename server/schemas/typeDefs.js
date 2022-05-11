@@ -51,7 +51,12 @@ const typeDefs = gql`
         ): Post
         addComment(postId: ID!, commentBody: String!): Post
         deletePost(_id: ID!): Post
-        updatePost(postId: ID!): Post
+        updatePost(
+            postId: ID!
+            title: String
+            plantType: String
+            description: String
+        ): Post
     }
 `;
 

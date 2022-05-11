@@ -37,7 +37,7 @@ function SinglePost() {
                     wrap="wrap"
                     justifyContent="center"
                 >
-                    {Auth.loggedIn() && <UpdateForm postId={currentPost._id} />}
+                    {Auth.loggedIn && <UpdateForm postId={currentPost._id} />}
                     <PostCard
                         id={currentPost._id}
                         title={currentPost.title}

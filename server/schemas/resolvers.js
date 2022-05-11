@@ -102,21 +102,34 @@ const resolvers = {
         deletePost: async (parent, { _id }) => {
             return Post.findByIdAndDelete({ _id });
         },
-        updatePost: async (parents, args, context) => {
+        updatePost: async (
+            parents,
+            { postId, title, description, plantType },
+            context
+        ) => {
             if (context.user) {
-                const updatedPost = await Post.findByIdAndUpdate(
-                    { _id: args.postId },
-                    {
-                        $push: {
-                            comments: {
-                                username: context.user.username,
-                                commentBody: commentBody,
-                            },
-                        },
-                    },
-                    { new: true }
-                );
-                return updatedPost;
+                const argsNoIdObj = { title, description, plantType };
+                const argsNoIdArr = [];
+                const argsObj = {};
+                for (property in argsNoIdObj) {
+                    if (`${argsNoIdObj[property]}` !== "undefined") {
+                        argsNoIdArr.push(
+                            `${property}: ${argsNoIdObj[property]}`
+                        );
+                    }
+                }
+                for (var i = 0; i < argsNoIdArr.length; i++) {
+                    console.log(typeof argsNoIdArr[i]);
+                }
+                console.log(argsNoIdArr);
+                console.log(argsObj);
+
+                // const updatedPost = await Post.findByIdAndUpdate(
+                //     { _id: postId },
+                //     { argsNoId },
+                //     { new: true }
+                // );
+                // return updatedPost;
             }
 
             throw new AuthenticationError("You need to be logged in.");

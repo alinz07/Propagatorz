@@ -21,7 +21,7 @@ function UpdateForm(post) {
     //     event.preventDefault();
     //     try {
     //         await addComment({
-    //             variables: { postId, commentBody },
+    //             variables: { postBody },
     //         });
     //         setBody("");
     //     } catch (e) {

@@ -109,27 +109,13 @@ const resolvers = {
         ) => {
             if (context.user) {
                 const argsNoIdObj = { title, description, plantType };
-                const argsNoIdArr = [];
-                const argsObj = {};
-                for (property in argsNoIdObj) {
-                    if (`${argsNoIdObj[property]}` !== "undefined") {
-                        argsNoIdArr.push(
-                            `${property}: ${argsNoIdObj[property]}`
-                        );
-                    }
-                }
-                for (var i = 0; i < argsNoIdArr.length; i++) {
-                    console.log(typeof argsNoIdArr[i]);
-                }
-                console.log(argsNoIdArr);
-                console.log(argsObj);
 
-                // const updatedPost = await Post.findByIdAndUpdate(
-                //     { _id: postId },
-                //     { argsNoId },
-                //     { new: true }
-                // );
-                // return updatedPost;
+                const updatedPost = await Post.findByIdAndUpdate(
+                    { _id: postId },
+                    { ...argsNoIdObj },
+                    { new: true }
+                );
+                return updatedPost;
             }
 
             throw new AuthenticationError("You need to be logged in.");

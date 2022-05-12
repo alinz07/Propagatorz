@@ -89,7 +89,7 @@ export const UPDATE_POST = gql`
             _id
             title
             plantType
-            decription
+            description
             picture
             createdAt
             username

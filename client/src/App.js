@@ -9,7 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { StoreProvider } from "./utils/globalState";
 
-import SinglePost from "./pages/SinglePost";
+// import SinglePost from "./pages/SinglePost";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -17,6 +17,10 @@ import CreatePost from "./pages/CreatePost";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+
+
+
+
 
 const httpLink = createHttpLink({
     uri: "/graphql",
@@ -48,11 +52,11 @@ function App() {
                             <Route exact path="/" element={<Home />} />
                             <Route exact path="/login" element={<Login />} />
                             <Route exact path="/signup" element={<Signup />} />
-                            <Route
+                            {/* <Route
                                 exact
                                 path="/singlePost/:id"
                                 element={<SinglePost />}
-                            />
+                            /> */}
                             <Route
                                 exact
                                 path="/createPost"

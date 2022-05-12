@@ -82,19 +82,18 @@ const resolvers = {
         // create new comment
         addComment: async (parent, { postId, commentBody }, context) => {
             if (context.user) {
-                const updatedPost = await Post.findOneAndUpdate(
+                const updatedPost = await Post.findByIdAndUpdate(
                     { _id: postId },
                     {
                         $push: {
                             comments: {
-                                commentBody,
                                 username: context.user.username,
+                                commentBody: commentBody,
                             },
                         },
                     },
                     { new: true }
                 );
-
                 return updatedPost;
             }
 
@@ -102,6 +101,24 @@ const resolvers = {
         },
         deletePost: async (parent, { _id }) => {
             return Post.findByIdAndDelete({ _id });
+        },
+        updatePost: async (
+            parent,
+            { postId, title, plantType, description },
+            context
+        ) => {
+            if (context.user) {
+                console.log(postId, title, description, plantType);
+                const argsNoIdObj = { title, description, plantType };
+                const updatedPost = await Post.findByIdAndUpdate(
+                    { _id: postId },
+                    { ...argsNoIdObj },
+                    { new: true }
+                );
+                return updatedPost;
+            }
+
+            throw new AuthenticationError("You need to be logged in.");
         },
     },
 };

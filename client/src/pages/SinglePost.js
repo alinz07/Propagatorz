@@ -5,6 +5,8 @@ import { QUERY_ALL_POSTS } from "../utils/queries";
 import CommentForm from "../components/CommentForm";
 import { Grid } from "@mui/material";
 import PostCard from "../components/Card";
+import UpdateForm from "../components/UpdateForm";
+import Auth from "../utils/auth";
 
 function SinglePost() {
     const { id } = useParams();
@@ -24,8 +26,7 @@ function SinglePost() {
         if (!currentPost) {
             return;
         }
-        console.log(currentPost.comments);
-    }, [currentPost, setCurrentPost]);
+    }, [currentPost, setCurrentPost, postId]);
 
     return (
         <Grid>
@@ -35,19 +36,29 @@ function SinglePost() {
                     display="flex"
                     wrap="wrap"
                     justifyContent="center"
+                    id="singlepost-container"
                 >
-                    <PostCard
-                        id={currentPost._id}
-                        title={currentPost.title}
-                        commentCount={currentPost.commentCount}
-                        comments={currentPost.comments}
-                        createdAt={currentPost.createdAt}
-                        description={currentPost.description}
-                        picture={currentPost.picture}
-                        plantType={currentPost.plantType}
-                        username={currentPost.username}
-                    ></PostCard>
-                    <CommentForm />
+                    {Auth.loggedIn && (
+                        <Grid item xs={12} id="updateform-container">
+                            <UpdateForm postId={currentPost._id} />
+                        </Grid>
+                    )}
+                    <Grid item id="postcard container" xs={12}>
+                        <PostCard
+                            id={currentPost._id}
+                            title={currentPost.title}
+                            commentCount={currentPost.commentCount}
+                            comments={currentPost.comments}
+                            createdAt={currentPost.createdAt}
+                            description={currentPost.description}
+                            picture={currentPost.picture}
+                            plantType={currentPost.plantType}
+                            username={currentPost.username}
+                        ></PostCard>
+                    </Grid>
+                    <Grid item xs={12} id="comment-form-grid">
+                        <CommentForm postId={currentPost._id} />
+                    </Grid>
                 </Grid>
             ) : null}
             {loading ? <Grid>...loading</Grid> : null}

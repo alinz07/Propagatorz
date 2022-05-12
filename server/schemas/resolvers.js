@@ -103,13 +103,13 @@ const resolvers = {
             return Post.findByIdAndDelete({ _id });
         },
         updatePost: async (
-            parents,
-            { postId, title, description, plantType },
+            parent,
+            { postId, title, plantType, description },
             context
         ) => {
             if (context.user) {
+                console.log(postId, title, description, plantType);
                 const argsNoIdObj = { title, description, plantType };
-
                 const updatedPost = await Post.findByIdAndUpdate(
                     { _id: postId },
                     { ...argsNoIdObj },

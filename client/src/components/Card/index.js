@@ -203,7 +203,7 @@ function PostCard(post) {
                                                     }}
                                                 >
                                                     <Chip
-                                                        label="Comment"
+                                                        label="Comment/Update your post"
                                                         color="primary"
                                                         id="chip"
                                                     />

@@ -80,7 +80,7 @@ header nav ul li a:hover {
     border-bottom: 3px solid var(--light);
 }
 
-/* Cards */
+/* PostCards */
 .cardlist-container {
     background-color: var(--light);
 }
@@ -190,6 +190,36 @@ button:hover {
     border: 1px solid var(--light-green);
 }
 
+/* singlepost page */
+#singlepost-container > * {
+    margin: 20px;
+}
+#contact-form {
+    background-color: var(--med-green);
+    margin-top: -10px;
+}
+#form-divs-container {
+    width: fit-content;
+}
+#contact-form > div {
+    text-align: center;
+}
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root,
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root,
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+    background-color: whitesmoke;
+    width: 92%;
+}
+#update-btn {
+    background-color: var(--main-green);
+}
+#comment-form-grid {
+    background-color: var(--med-green);
+    padding: 20px;
+}
+#comment-textarea {
+    margin-bottom: 20px;
+}
 /* footer */
 footer {
     background-color: var(--main-green);
@@ -197,7 +227,7 @@ footer {
     padding: 20px;
     line-height: 40px;
     display: flex;
-    margin-top: auto;
+    margin-top: 20px;
 }
 
 #avatar {

@@ -1,33 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../utils/mutations';
+import React, { useEffect, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_POST } from "../utils/mutations";
 import { Grid } from "@mui/material";
 
 const CreatePost = () => {
     const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
 
-    const [formState, setFormState] = useState({ title: '', plantType: '', description: '', picture: '' })
+    const [formState, setFormState] = useState({
+        title: "",
+        plantType: "",
+        description: "",
+        picture: "",
+    });
     const { picture } = formState;
-    const [errorMessage, setErrorMessage] = useState('');
-    const [loadingMessage, setLoadingMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState("");
+    const [loadingMessage, setLoadingMessage] = useState("");
 
-    const [imageSelected, setImageSelected] = useState('');
+    const [imageSelected, setImageSelected] = useState("");
     const [preview, setPreview] = useState();
 
     const [addPost, { error }] = useMutation(ADD_POST);
 
+    useEffect(() => {
+        if (loadingMessage === "Done!") {
+            window.location.assign("/");
+        }
+    });
+
     // useEffect so that user can see a preview of image before hitting submit
     useEffect(() => {
         if (!imageSelected) {
-            setPreview(undefined)
-            return
+            setPreview(undefined);
+            return;
         }
 
-        const objectUrl = URL.createObjectURL(imageSelected)
-        setPreview(objectUrl)
+        const objectUrl = URL.createObjectURL(imageSelected);
+        setPreview(objectUrl);
 
-        return () => URL.revokeObjectURL(objectUrl)
-    }, [imageSelected])
+        return () => URL.revokeObjectURL(objectUrl);
+    }, [imageSelected]);
 
     // useEffect so that the picture url from cloudinary gets updated in the formState
     useEffect(() => {
@@ -35,18 +46,28 @@ const CreatePost = () => {
             try {
                 // add post to database
                 addPost({
-                    variables: { title: formState.title, plantType: formState.plantType, description: formState.description, picture: formState.picture }
+                    variables: {
+                        title: formState.title,
+                        plantType: formState.plantType,
+                        description: formState.description,
+                        picture: formState.picture,
+                    },
                 });
                 // clear form value
-                setLoadingMessage('Done!')
-                setFormState({ title: '', plantType: '', description: '', picture: '' });
-                console.log(formState)
+                setLoadingMessage("Done!");
+                setFormState({
+                    title: "",
+                    plantType: "",
+                    description: "",
+                    picture: "",
+                });
+                console.log(formState);
             } catch (e) {
                 console.error(e);
             }
-        }
+        };
         if (!picture) {
-            return
+            return;
         } else {
             console.log(formState);
             updateDB();
@@ -56,15 +77,14 @@ const CreatePost = () => {
     // form input handler
     function handleChange(e) {
         if (!e.target.value.length) {
-            setErrorMessage(`${e.target.name} is required.`)
-        }
-        else {
-            setErrorMessage('');
+            setErrorMessage(`${e.target.name} is required.`);
+        } else {
+            setErrorMessage("");
         }
 
         // only allow state to update with user input if there are no error messages
         if (!errorMessage) {
-            setFormState({ ...formState, [e.target.name]: e.target.value })
+            setFormState({ ...formState, [e.target.name]: e.target.value });
             // console.log(formState)
         }
     }
@@ -72,59 +92,76 @@ const CreatePost = () => {
     // upload image to cloudinary and set state
     const uploadImage = async () => {
         // console.log(imageSelected)
-        const formData = new FormData()
-        formData.append('file', imageSelected)
-        formData.append("upload_preset", (CLOUD_PRESET))
+        const formData = new FormData();
+        formData.append("file", imageSelected);
+        formData.append("upload_preset", CLOUD_PRESET);
 
         fetch("https://api.cloudinary.com/v1_1/dk53zrwwe/image/upload", {
-            method: 'post',
-            body: formData
+            method: "post",
+            body: formData,
         })
-            .then(response =>
-                response.json()
-            )
-            .then(data => {
+            .then((response) => response.json())
+            .then((data) => {
                 // console.log(data)
-                const cloudinaryUrl = data.secure_url
-                console.log(cloudinaryUrl)
-                setFormState({ ...formState, picture: cloudinaryUrl })
-                console.log(formState)
-            })
+                const cloudinaryUrl = data.secure_url;
+                console.log(cloudinaryUrl);
+                setFormState({ ...formState, picture: cloudinaryUrl });
+                console.log(formState);
+            });
     };
 
-    const handleFormSubmit = async e => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         // upload image to cloudinary and set state
-        uploadImage()
-        setLoadingMessage('Working on it...')
-        return
-    }
+        uploadImage();
+        setLoadingMessage("Working on it...");
+        return;
+    };
 
     return (
-        <Grid container display="flex" wrap="wrap" justifyContent="center" className='form-container'>
+        <Grid
+            container
+            display="flex"
+            wrap="wrap"
+            justifyContent="center"
+            className="form-container"
+        >
             <Grid item xs={9} md={9} lg={7} xl={5} className="create-post-form">
-
                 <Grid item>
-                    <h2 className="sign-in-form-heading">Submit a plant help form</h2>
+                    <h2 className="sign-in-form-heading">
+                        Submit a plant help form
+                    </h2>
                 </Grid>
 
                 <Grid item>
                     <form onSubmit={handleFormSubmit}>
-
-                        <Grid container textAlign="left" justifyContent="center">
-
+                        <Grid
+                            container
+                            textAlign="left"
+                            justifyContent="center"
+                        >
                             <Grid item xs={12}>
                                 <label htmlFor="title">Title:</label>
-                                <input type="text" onBlur={handleChange} name="title"></input>
+                                <input
+                                    type="text"
+                                    onBlur={handleChange}
+                                    name="title"
+                                ></input>
                             </Grid>
 
                             <Grid item xs={12}>
                                 <label htmlFor="plantType">Plant Name:</label>
-                                <input type="text" onBlur={handleChange} name="plantType"></input>
+                                <input
+                                    type="text"
+                                    onBlur={handleChange}
+                                    name="plantType"
+                                ></input>
                             </Grid>
 
                             <Grid item xs={12}>
-                                <label htmlFor="description">Description:</label>
+                                <label htmlFor="description">
+                                    Description:
+                                </label>
                                 <textarea
                                     name="description"
                                     placeholder=""
@@ -135,24 +172,39 @@ const CreatePost = () => {
 
                             <Grid item xs={12}>
                                 <label htmlFor="picture">Upload a photo:</label>
-                                <input type="file" onChange={(event) => setImageSelected(event.target.files[0])} name="picture"></input>
-                                {imageSelected && <img src={preview} alt='upload' width='400px' />}
+                                <input
+                                    type="file"
+                                    onChange={(event) =>
+                                        setImageSelected(event.target.files[0])
+                                    }
+                                    name="picture"
+                                ></input>
+                                {imageSelected && (
+                                    <img
+                                        src={preview}
+                                        alt="upload"
+                                        width="400px"
+                                    />
+                                )}
                             </Grid>
 
                             {errorMessage && (
-                                <div className='error-message'>{errorMessage}</div>
+                                <div className="error-message">
+                                    {errorMessage}
+                                </div>
                             )}
 
                             <Grid>
-                                <button type="submit">
-                                    Submit
-                                </button>
+                                <button type="submit">Submit</button>
                             </Grid>
 
                             {loadingMessage && <div>{loadingMessage}</div>}
 
-                            {error && <div className='error-message'>Something went wrong...</div>}
-
+                            {error && (
+                                <div className="error-message">
+                                    Something went wrong...
+                                </div>
+                            )}
                         </Grid>
                     </form>
                 </Grid>

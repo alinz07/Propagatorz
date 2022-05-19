@@ -87,9 +87,9 @@ header nav ul li a:hover {
 #react-card {
     box-shadow: 1px 1px 1px 1px floralwhite;
 }
-.cardPic {
+/* .cardPic {
     object-fit: contain !important;
-}
+} */
 
 .delBtn {
     background: var(--red) !important;

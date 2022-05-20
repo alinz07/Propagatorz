@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
     ApolloClient,
@@ -44,22 +44,33 @@ function App() {
                 <div className="main-wrapper">
                     <StoreProvider>
                         <Nav />
-                        <Routes>
-                            <Route exact path="/" element={<Home />} />
-                            <Route exact path="/login" element={<Login />} />
-                            <Route exact path="/signup" element={<Signup />} />
-                            <Route
-                                exact
-                                path="/singlePost/:id"
-                                element={<SinglePost />}
-                            />
-                            <Route
-                                exact
-                                path="/createPost"
-                                element={<CreatePost />}
-                            />
-                            <Route element={<NoMatch />} />
-                        </Routes>
+                        <Suspense fallback={<h1>Loading posts...</h1>}>
+                            <Routes>
+                                <Route exact path="/" element={<Home />} />
+                                <Route
+                                    exact
+                                    path="/login"
+                                    element={<Login />}
+                                />
+                                <Route
+                                    exact
+                                    path="/signup"
+                                    element={<Signup />}
+                                />
+                                <Route
+                                    exact
+                                    path="/singlePost/:id"
+                                    element={<SinglePost />}
+                                />
+                                <Route
+                                    exact
+                                    path="/createPost"
+                                    element={<CreatePost />}
+                                />
+                                <Route element={<NoMatch />} />
+                            </Routes>
+                        </Suspense>
+
                         <Footer />
                     </StoreProvider>
                 </div>

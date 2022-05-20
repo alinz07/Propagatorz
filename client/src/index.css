@@ -27,7 +27,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: var(--light);
+    background-color: darkslategray;
 }
 
 /* header and nav */
@@ -82,14 +82,14 @@ header nav ul li a:hover {
 
 /* PostCards */
 .cardlist-container {
-    background-color: var(--light);
+    background-color: darkslategray;
 }
 #react-card {
     box-shadow: 1px 1px 1px 1px floralwhite;
 }
-/* .cardPic {
+.cardPic {
     object-fit: contain !important;
-} */
+}
 
 .delBtn {
     background: var(--red) !important;

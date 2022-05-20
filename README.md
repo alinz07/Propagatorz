@@ -1,6 +1,6 @@
 # Propagatorz
 
-## Link to deployed site on heroku: https://propagatorz-plant-help.herokuapp.com/
+## Link to deployed app on heroku: https://propagatorz-plant-help.herokuapp.com/
 
 ## Table of Contents
 
@@ -14,8 +14,7 @@
 ## Introduction
 
 Propagatorz is a "plant help line" web application that allows users to share photos and notes regarding thier house plants.
-Users will need to login or sign up first in order to start taking part in the discussions.
-The login functionality also allows users to keep track of all of the posts they created as well.
+Users will need to login or sign up first in order to start taking part in the discussions. The app is organized in typical React fashion with a client folder and server folder. The server holds the db configuration, db models, schemas and utilities that support the models. The client folder holds all of the function components and page components as well as the build folder that uses webpack to minify and serve the React assets. The client side also has all of the mongoose and graphql queries/mutations/actions/reducers that are ran inside the components.
 
 ## User Story
 
@@ -23,17 +22,12 @@ The login functionality also allows users to keep track of all of the posts they
 -   As a user I want other users to be able to comment on my post to give me feedback on what the problem might be (i.e. over-watering). <br/>
 -   As a user I want to be able to see other user’s posts and leave my own comments. <br/>
 -   As a user I want to be able to log into my account so that I can create a new post and then filter all the posts so I can just see just my own posts. <br/>
+-   As a user I want to be able to update my posts. <br/>
 
-## Live Link & Screenshots
+## Screenshots
 
-**View the application here:** deployed link to come... <br/>
-
-**View website screenshots here:** <br/>
 Home Page <br/>
 ![Screenshot](./ImagesForReadMe/homepage.png) <br/>
-
-Create Post Page <br/>
-![Screenshot](./ImagesForReadMe/create-post.png) <br/>
 
 ## Technologies Used
 

@@ -1,10 +1,11 @@
-const CardList = React.lazy(() => import("../components/CardList"));
 import React, { Suspense, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_USERS } from "../utils/queries";
 import { useStoreContext } from "../utils/globalState";
 import { UPDATE_USERS, UPDATE_LOGGED_IN_USER } from "../utils/actions";
 import Auth from "../utils/auth";
+
+const CardList = React.lazy(() => import("../components/CardList"));
 
 const Home = () => {
     const [state, dispatch] = useStoreContext();

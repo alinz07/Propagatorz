@@ -34,7 +34,7 @@ function CardList() {
             //         });
             //     });
         }
-    }, [data, loading, dispatch]);
+    }, [data]);
 
     function filterPosts() {
         if (Auth.loggedIn() && state.postFilter && state.loggedInUser)

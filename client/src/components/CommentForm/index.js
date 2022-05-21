@@ -1,6 +1,8 @@
 import { useMutation } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { ADD_COMMENT } from "../../utils/mutations";
+import { Button, Grid } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 // import { useStoreContext } from "../../utils/globalState";
 
 const CommentForm = ({ postId }) => {
@@ -26,7 +28,7 @@ const CommentForm = ({ postId }) => {
     };
 
     return (
-        <div>
+        <Grid textAlign="center">
             {error && <div>Something went wrong...</div>}
 
             <form>
@@ -34,13 +36,20 @@ const CommentForm = ({ postId }) => {
                     placeholder="Leave a comment"
                     value={commentBody}
                     onChange={handleChange}
+                    id="comment-textarea"
                 ></textarea>
 
-                <button type="submit" onClick={handleFormSubmit}>
+                <Button
+                    startIcon={<SendIcon />}
+                    variant="contained"
+                    type="submit"
+                    id="update-btn"
+                    onClick={handleFormSubmit}
+                >
                     Submit
-                </button>
+                </Button>
             </form>
-        </div>
+        </Grid>
     );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
     ApolloClient,
@@ -10,13 +10,14 @@ import { setContext } from "@apollo/client/link/context";
 import { StoreProvider } from "./utils/globalState";
 
 import SinglePost from "./pages/SinglePost";
-import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreatePost from "./pages/CreatePost";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+
+const Home = lazy(() => import("./pages/Home"));
 
 const httpLink = createHttpLink({
     uri: "/graphql",
@@ -44,22 +45,33 @@ function App() {
                 <div className="main-wrapper">
                     <StoreProvider>
                         <Nav />
-                        <Routes>
-                            <Route exact path="/" element={<Home />} />
-                            <Route exact path="/login" element={<Login />} />
-                            <Route exact path="/signup" element={<Signup />} />
-                            <Route
-                                exact
-                                path="/singlePost/:id"
-                                element={<SinglePost />}
-                            />
-                            <Route
-                                exact
-                                path="/createPost"
-                                element={<CreatePost />}
-                            />
-                            <Route element={<NoMatch />} />
-                        </Routes>
+                        <Suspense fallback={<h1>Loading...</h1>}>
+                            <Routes>
+                                <Route exact path="/" element={<Home />} />
+                                <Route
+                                    exact
+                                    path="/login"
+                                    element={<Login />}
+                                />
+                                <Route
+                                    exact
+                                    path="/signup"
+                                    element={<Signup />}
+                                />
+                                <Route
+                                    exact
+                                    path="/singlePost/:id"
+                                    element={<SinglePost />}
+                                />
+                                <Route
+                                    exact
+                                    path="/createPost"
+                                    element={<CreatePost />}
+                                />
+                                <Route element={<NoMatch />} />
+                            </Routes>
+                        </Suspense>
+
                         <Footer />
                     </StoreProvider>
                 </div>

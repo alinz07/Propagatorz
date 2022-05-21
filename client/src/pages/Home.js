@@ -1,10 +1,11 @@
-import CardList from "../components/CardList";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_USERS } from "../utils/queries";
 import { useStoreContext } from "../utils/globalState";
 import { UPDATE_USERS, UPDATE_LOGGED_IN_USER } from "../utils/actions";
 import Auth from "../utils/auth";
+
+const CardList = React.lazy(() => import("../components/CardList"));
 
 const Home = () => {
     const [state, dispatch] = useStoreContext();
@@ -18,7 +19,7 @@ const Home = () => {
                 users: data.users,
             });
         }
-    }, [data, loading, dispatch]);
+    }, [data]);
 
     useEffect(() => {
         if (Auth.loggedIn()) {
@@ -34,7 +35,9 @@ const Home = () => {
 
     return (
         <div className="cardlist-container">
-            <CardList />
+            <Suspense fallback="Loading posts...">
+                <CardList />
+            </Suspense>
         </div>
     );
 };

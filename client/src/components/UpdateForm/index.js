@@ -50,8 +50,15 @@ function UpdateForm(post) {
         <Grid item xs={12} container>
             <Grid item>
                 <form id="contact-form" onSubmit={handleSubmit}>
-                    Dear greenthumb, all fields are optional
-                    <Grid container justifyContent="center">
+                    <div>
+                        All fields optional; Only update the fields you need to,
+                        fellow greenthumb!
+                    </div>
+                    <Grid
+                        container
+                        justifyContent="center"
+                        id="form-divs-container"
+                    >
                         <Grid item xs={12} p={2}>
                             <TextField
                                 p={1}
@@ -82,11 +89,12 @@ function UpdateForm(post) {
                                 onChange={handleChange}
                             />
                         </Grid>
-                        <Grid item xs={12} p={2}>
+                        <Grid item xs={12} p={2} textAlign="center">
                             <Button
                                 startIcon={<SendIcon />}
                                 variant="contained"
                                 type="submit"
+                                id="update-btn"
                             >
                                 Submit
                             </Button>

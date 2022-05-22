@@ -150,7 +150,9 @@ const CreatePost = () => {
                             </Grid>
 
                             <Grid item xs={12}>
-                                <label htmlFor="plantType">Plant Name:</label>
+                                <label htmlFor="plantType">
+                                    Plant Species:
+                                </label>
                                 <input
                                     type="text"
                                     onBlur={handleChange}

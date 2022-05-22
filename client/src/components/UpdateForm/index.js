@@ -51,8 +51,9 @@ function UpdateForm(post) {
             <Grid item>
                 <form id="contact-form" onSubmit={handleSubmit}>
                     <div>
-                        All fields optional; Only update the fields you need to,
-                        fellow greenthumb!
+                        Dear Greenthumb, for now, you must re-enter all fields
+                        to update the post. We hope to improve that
+                        functionality soon!
                     </div>
                     <Grid
                         container

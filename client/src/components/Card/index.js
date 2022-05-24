@@ -94,6 +94,7 @@ function PostCard(post) {
                     image={picture}
                     className="cardPic"
                     id="card-media"
+                    loading="lazy"
                 />
 
                 <CardContent>

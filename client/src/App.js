@@ -9,15 +9,14 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { StoreProvider } from "./utils/globalState";
 
-import SinglePost from "./pages/SinglePost";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import CreatePost from "./pages/CreatePost";
-import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-
 const Home = lazy(() => import("./pages/Home"));
+const SinglePost = lazy(() => import("./pages/SinglePost"));
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const NoMatch = lazy(() => import("./pages/NoMatch"));
+const CreatePost = lazy(() => import("./pages/CreatePost"));
+const Nav = lazy(() => import("./components/Nav"));
+const Footer = lazy(() => import("./components/Footer"));
 
 const httpLink = createHttpLink({
     uri: "/graphql",
@@ -44,8 +43,8 @@ function App() {
             <Router>
                 <div className="main-wrapper">
                     <StoreProvider>
-                        <Nav />
                         <Suspense fallback={<h1>Loading...</h1>}>
+                            <Nav />
                             <Routes>
                                 <Route exact path="/" element={<Home />} />
                                 <Route
@@ -70,9 +69,8 @@ function App() {
                                 />
                                 <Route element={<NoMatch />} />
                             </Routes>
+                            <Footer />
                         </Suspense>
-
-                        <Footer />
                     </StoreProvider>
                 </div>
             </Router>

@@ -3,12 +3,9 @@ import { Grid, TextField, Button } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { UPDATE_POST } from "../../utils/mutations";
 import { useState } from "react";
-import { useStoreContext } from "../../utils/globalState";
 import SendIcon from "@mui/icons-material/Send";
 
 function UpdateForm(post) {
-    const [state, dispatch] = useStoreContext();
-
     const { postId } = post;
 
     const [postBody, setPostBody] = useState({
@@ -17,22 +14,19 @@ function UpdateForm(post) {
         plantType: "",
         description: "",
     });
-    const [updatePost, { error }] = useMutation(UPDATE_POST);
+    const [updatePost] = useMutation(UPDATE_POST);
 
     useEffect(() => {
         setPostBody({ ...postBody, postId: postId });
     }, [postId]);
 
     const handleSubmit = async (event) => {
-        console.log(postBody);
         event.preventDefault();
         if (postBody.postId) {
-            console.log(postBody);
             try {
                 await updatePost({
                     variables: { ...postBody },
                 });
-                setPostBody("");
             } catch (e) {
                 console.error(e);
             }
@@ -43,7 +37,6 @@ function UpdateForm(post) {
 
     const handleChange = (event) => {
         setPostBody({ ...postBody, [event.target.name]: event.target.value });
-        console.log("handling change");
     };
 
     return (

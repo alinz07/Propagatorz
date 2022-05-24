@@ -3,9 +3,8 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { useStoreContext } from "../../utils/globalState";
 import { UPDATE_FILTER } from "../../utils/actions";
-// import Avatar from "@mui/material/Avatar";
-// import { Grid } from "@mui/material";
-import appLogo from "../../assets/Images/sad-plant.png";
+import appLogo from "../../assets/sad-plant.png";
+import { Grid } from "@mui/material";
 
 function Nav() {
     const [state, dispatch] = useStoreContext();
@@ -32,7 +31,6 @@ function Nav() {
                             <Link to="/createPost">Create Post</Link>
                         </li>
                         <li>
-                            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
                             <a href="/" onClick={() => Auth.logout()}>
                                 Logout
                             </a>
@@ -58,16 +56,19 @@ function Nav() {
     return (
         <header>
             <Link to="/">
-                {/* <Avatar
-                    alt="plant image"
-                    src={require("../../assets/Images/sad-plant.png")}
-                    sx={{ width: 80, height: 80 }}
-                    variant="square"
-                ></Avatar> */}
-                <div className="heading-container">
-                    <img src={appLogo} alt="plant logo" width="80" />
-                    <h1 href="/">Propagatorz</h1>
-                </div>
+                <Grid container className="heading-container">
+                    <Grid item>
+                        <img
+                            src={appLogo}
+                            alt="plant logo"
+                            width="80"
+                            height="80"
+                        />
+                    </Grid>
+                    <Grid item>
+                        <h1 href="/">Propagatorz</h1>
+                    </Grid>
+                </Grid>
             </Link>
 
             <nav>{showNavigation()}</nav>

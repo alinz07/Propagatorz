@@ -10,7 +10,7 @@ import Auth from "../../utils/auth";
 function CardList() {
     const [state, dispatch] = useStoreContext();
 
-    const { loading, data } = useQuery(QUERY_ALL_POSTS);
+    const { data } = useQuery(QUERY_ALL_POSTS);
 
     useEffect(() => {
         if (data) {
@@ -18,21 +18,6 @@ function CardList() {
                 type: UPDATE_POSTS,
                 posts: data.posts,
             });
-            // console.log(state);
-
-            //also take each prodcut and save it to IndexedDB using the helper function
-            // data.products.forEach((product) => {
-            //     idbPromise("products", "put", product);
-            // });
-            // } else if (!loading) {
-            //     //since we're offline, get all of the data from the 'products' store
-            //     idbPromise("products", "get").then((products) => {
-            //         //use retrieved data to set global state for offline browsing
-            //         dispatch({
-            //             type: UPDATE_PRODUCTS,
-            //             products: products,
-            //         });
-            //     });
         }
     }, [data]);
 

@@ -38,14 +38,14 @@ const Signup = () => {
         } catch (e) {
             console.error(e);
             if (e.message.includes("dup") && e.message.includes("username")) {
-                setSignupError("usernameError");
+                setSignupError("username is taken");
             } else if (
                 e.message.includes("dup") &&
                 e.message.includes("email")
             ) {
-                setSignupError("emailError");
+                setSignupError("email is already registered with Propagatorz");
             } else if (e.message.includes("minimum")) {
-                setSignupError("passError");
+                setSignupError("password must be at least 5 characters long");
             }
         }
     };
@@ -106,7 +106,7 @@ const Signup = () => {
                                 />
                             </Grid>
 
-                            {error && <div>Signup failed</div>}
+                            {error && <div>{signupError}</div>}
                             <Grid>
                                 <button type="submit">Submit</button>
                             </Grid>

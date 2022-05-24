@@ -1,8 +1,5 @@
 import React from "react";
-import { Avatar, Stack, Tooltip } from "@mui/material";
-import { green } from "@mui/material/colors";
-import { Grid } from "@mui/material";
-import { left } from "@popperjs/core";
+import { Avatar, Stack, Tooltip, Grid } from "@mui/material";
 
 function Footer() {
     return (

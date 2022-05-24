@@ -2,7 +2,6 @@ import { useReducer } from "react";
 import {
     UPDATE_POSTS,
     UPDATE_USERS,
-    UPDATE_FORMDATA,
     UPDATE_FILTER,
     UPDATE_LOGGED_IN_USER,
     DELETE_A_POST,
@@ -21,11 +20,6 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 users: [...action.users],
-            };
-        case UPDATE_FORMDATA:
-            return {
-                ...state,
-                formData: [...action.formData],
             };
         case UPDATE_FILTER:
             return {

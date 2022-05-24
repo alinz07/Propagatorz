@@ -1,6 +1,5 @@
 const path = require("path");
 const express = require("express");
-require("newrelic");
 
 //import ApolloServer
 const { ApolloServer } = require("apollo-server-express");

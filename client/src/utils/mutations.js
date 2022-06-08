@@ -23,32 +23,6 @@ export const ADD_USER = gql`
     }
 `;
 
-export const UPDATE_USER = gql`
-    mutation updateUser(
-        $username: String!
-        $email: String!
-        $password: String!
-    ) {
-        updateUser(username: $username, email: $email, password: $password) {
-            token
-            user {
-                _id
-                username
-                email
-                password
-            }
-        }
-    }
-`;
-
-export const DELETE_USER = gql`
-    mutation ($_id: Int) {
-        deleteUser(where: { id: { _eq: $id } }) {
-            affected_rows
-        }
-    }
-`;
-
 export const ADD_POST = gql`
     mutation addPost(
         $title: String!
@@ -129,14 +103,6 @@ export const UPDATE_COMMENT = gql`
                 _id
                 description
             }
-        }
-    }
-`;
-
-export const DELETE_COMMENT = gql`
-    mutation ($comment: String!, $description: String!) {
-        deleteComment(where: { comment: { _eq: $comment } }) {
-            affected_rows
         }
     }
 `;

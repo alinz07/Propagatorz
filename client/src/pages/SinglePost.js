@@ -43,7 +43,6 @@ function SinglePost() {
                             <UpdateForm postId={currentPost._id} />
                         </Grid>
                     )}
-                    {/* <Grid item id="postcard container" xs={12}> */}
                     <PostCard
                         id={currentPost._id}
                         title={currentPost.title}
@@ -55,7 +54,6 @@ function SinglePost() {
                         plantType={currentPost.plantType}
                         username={currentPost.username}
                     ></PostCard>
-                    {/* </Grid> */}
                     <Grid item xs={4} id="comment-form-grid">
                         <CommentForm postId={currentPost._id} />
                     </Grid>

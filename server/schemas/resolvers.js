@@ -4,18 +4,6 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
     Query: {
-        // get logged in user's JWT token
-        me: async (parent, args, context) => {
-            if (context.user) {
-                const userData = await User.findOne({ _id: context.user._id })
-                    .select("-password")
-                    .populate("posts");
-
-                return userData;
-            }
-
-            throw new AuthenticationError("Not logged in");
-        },
         // get all users
         users: async () => {
             return User.find().select("-password").populate("posts");

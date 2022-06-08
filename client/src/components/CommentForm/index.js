@@ -1,13 +1,10 @@
 import { useMutation } from "@apollo/client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ADD_COMMENT } from "../../utils/mutations";
 import { Button, Grid } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-// import { useStoreContext } from "../../utils/globalState";
 
 const CommentForm = ({ postId }) => {
-    // const [state, dispatch] = useStoreContext();
-
     const [commentBody, setBody] = useState("");
     const [addComment, { error }] = useMutation(ADD_COMMENT);
 

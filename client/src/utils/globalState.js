@@ -8,7 +8,6 @@ const StoreProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = usePostReducer({
         posts: [],
         users: [],
-        formData: "",
         postFilter: false,
         loggedInUser: "",
     });

@@ -89,28 +89,3 @@ export const QUERY_ONE_USER = gql`
         }
     }
 `;
-
-export const QUERY_ME = gql`
-    {
-        me {
-            _id
-            username
-            email
-            posts {
-                _id
-                title
-                plantType
-                description
-                picture
-                createdAt
-                commentCount
-                comments {
-                    _id
-                    commentBody
-                    username
-                    createdAt
-                }
-            }
-        }
-    }
-`;

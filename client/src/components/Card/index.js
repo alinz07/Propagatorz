@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Chip, Grid, Tooltip } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
+import {
+    Chip,
+    Grid,
+    Tooltip,
+    Card,
+    CardMedia,
+    CardContent,
+} from "@mui/material";
 import { useStoreContext } from "../../utils/globalState";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
@@ -90,6 +94,7 @@ function PostCard(post) {
                     image={picture}
                     className="cardPic"
                     id="card-media"
+                    loading="lazy"
                 />
 
                 <CardContent>

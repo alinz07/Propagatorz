@@ -6,15 +6,15 @@
 
 -   [Introduction](#introduction)
 -   [User Story](#user-story)
--   [Live Link & Screenshots](#live-link--screenshots)
 -   [Technologies Used](#technologies-used)
+-   [Screenshot](#screenshot)
 -   [Contact Info/Maintainers](#contributors)
 -   [Resources](#resources)
 
 ## Introduction
 
 Propagatorz is a "plant help line" web application that allows users to share photos and notes regarding thier house plants.
-Users will need to login or sign up first in order to start taking part in the discussions. The app is organized in typical React fashion with a client folder and server folder. The server holds the db configuration, db models, schemas and utilities that support the models. The client folder holds all of the function components and page components as well as the build folder that uses webpack to minify and serve the React assets. The client side also has all of the mongoose and graphql queries/mutations/actions/reducers that are ran inside the components.
+Users will need to login or sign up first in order to start taking part in the discussions. The app is organized in typical React fashion with a client folder and server folder. The server holds the db configuration, db models, schemas and utilities that support the models. The client folder holds all of the function components and page components as well as the build folder that uses webpack to minify and serve the React assets. The client side also has all of the mongoose and graphql queries/mutations/actions/reducers that are ran inside the components. Feel free to try with login: betty@email.com and password: password
 
 ## User Story
 
@@ -24,16 +24,11 @@ Users will need to login or sign up first in order to start taking part in the d
 -   As a user I want to be able to log into my account so that I can create a new post and then filter all the posts so I can just see just my own posts. <br/>
 -   As a user I want to be able to update my posts. <br/>
 
-## Screenshots
-
-Home Page <br/>
-![Screenshot](./ImagesForReadMe/homepage.png) <br/>
-
 ## Technologies Used
 
 -   React
 -   CSS Framework
-    -   [Mui](https://mui.com/material-ui/getting-started/installation/)
+-   [Mui](https://mui.com/material-ui/getting-started/installation/)
 -   Node
 -   Express
 -   Bcrypt
@@ -45,6 +40,11 @@ Home Page <br/>
 -   Nodemon
 -   day.js
 
+## Screenshot
+
+Home Page <br/>
+![Screenshot](./ImagesForReadMe/homepage.png) <br/>
+
 ## Contributors
 
 -   [Tony Linz](https://github.com/alinz07)
@@ -55,4 +55,4 @@ Home Page <br/>
 ## Resources
 
 -   Propagatorz Logo
-    -   https://www.istockphoto.com/vector/dying-dry-dead-houseplant-in-a-plant-pot-flat-design-icon-isolated-on-white-gm1060392342-283437244
+    https://www.istockphoto.com/vector/dying-dry-dead-houseplant-in-a-plant-pot-flat-design-icon-isolated-on-white-gm1060392342-283437244

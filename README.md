@@ -37,6 +37,8 @@ The app is organized in typical React fashion with a client folder and server fo
 
 ## User Story
 
+As an owner of beautiful plant babies, I want to network with other greenthumbs to get plant advice and show off my successes on a social media site so that all the fruits of my labors and pictures of my plants are all in one place.
+
 -   As a user I want to be able to upload a photo of my plant along with some other information describing the problem. <br/>
 -   As a user I want other users to be able to comment on my post to give me feedback on what the problem might be (i.e. over-watering). <br/>
 -   As a user I want to be able to see other user’s posts and leave my own comments. <br/>
@@ -68,7 +70,7 @@ npm i
 npm run develop
 ```
 
-This will start the GraphQL middleware on port 3000 and the React front end on port 3001 using the concurrently package
+This will start the GraphQL middleware on port 3000 and the React front end on port 3001 using the concurrently package. your front end should automatically open in your default browser upon running the develop command.
 
 ## Screenshot
 

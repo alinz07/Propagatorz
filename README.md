@@ -33,7 +33,8 @@ The app is organized in typical React fashion with a client folder and server fo
 -   Apollo Server
 -   [Cloudinary](https://cloudinary.com/)
 -   Nodemon
--   day.js
+-   Day.js
+-   JSON Web Tokens (JWT)
 
 ## User Story
 

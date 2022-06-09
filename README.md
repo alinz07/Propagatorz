@@ -1,8 +1,10 @@
 # Propagatorz
 
-## Link to deployed app on heroku: https://propagatorz-plant-help.herokuapp.com/
+## **Link to deployed app on heroku**: https://propagatorz-plant-help.herokuapp.com/
 
-## Table of Contents
+</br>
+
+## **Table of Contents**
 
 -   [Motivation and Code Overview](#motivation-and-code-overview)
 -   [Technologies Used](#technologies-used)
@@ -10,16 +12,20 @@
 -   [Instructions to Run App](#instructions-to-run-app)
 -   [Screenshot](#screenshot)
 -   [Contact Info/Maintainers](#contributors)
--   [Resources](#resources)
+-   [Credits](#credits)
 
-## Motivation and Code Overview
+</br>
+
+## **Motivation and Code Overview**
 
 Propagatorz is a "plant help line" web application that allows users to share photos and notes regarding thier house plants.
 Users will need to login or sign up first in order to start taking part in the discussions. Feel free to login with: betty@email.com and password: password. We're in the process of migrating the site to a faster host, but once accessed, the Single Page Application is very fast thanks to React. </br>
 
 The app is organized in typical React fashion with a client folder and server folder. The server holds the db configuration, db models, schemas and utilities that support the models. The client folder holds all of the function components and page components as well as the build folder that uses webpack to minify and serve the React assets. The client side also has all of the mongoose and graphql queries/mutations/actions/reducers that are ran inside the components.
 
-## Technologies Used
+</br>
+
+## **Technologies Used**
 
 -   React
 -   CSS Framework
@@ -36,7 +42,9 @@ The app is organized in typical React fashion with a client folder and server fo
 -   Day.js
 -   JSON Web Tokens (JWT)
 
-## User Story
+</br>
+
+## **User Story**
 
 As an owner of beautiful plant babies, I want to network with other greenthumbs to get plant advice and show off my successes on a social media site so that all the fruits of my labors and pictures of my plants are all in one place.
 
@@ -44,9 +52,11 @@ As an owner of beautiful plant babies, I want to network with other greenthumbs 
 -   As a user I want other users to be able to comment on my post to give me feedback on what the problem might be (i.e. over-watering). <br/>
 -   As a user I want to be able to see other user’s posts and leave my own comments. <br/>
 -   As a user I want to be able to log into my account so that I can create a new post and then filter all the posts so I can just see just my own posts. <br/>
--   As a user I want to be able to update my posts. <br/>
+-   As a user I want to be able to update my posts.
 
-## Instructions to Run App
+<br/>
+
+## **Instructions to Run App**
 
 1. Enter the following command in your terminal to clone the repository
 
@@ -73,18 +83,24 @@ npm run develop
 
 This will start the GraphQL middleware on port 3000 and the React front end on port 3001 using the concurrently package. your front end should automatically open in your default browser upon running the develop command.
 
-## Screenshot
+</br>
+
+## **Screenshot**
 
 ![Screenshot](./ImagesForReadMe/homepage.png) <br/>
 
-## Contributors
+</br>
+
+## **Contributors**
 
 -   [Tony Linz](https://github.com/alinz07)
 -   [Lindsey Dubnicka](https://github.com/lindseymiller2567)
 -   [Cole Johnson](https://github.com/ColeVibes)
 -   [Chris McLeod](https://github.com/Chris-McLeod2)
 
-## Resources
+</br>
+
+## **Credits**
 
 -   Propagatorz Logo
     https://www.istockphoto.com/vector/dying-dry-dead-houseplant-in-a-plant-pot-flat-design-icon-isolated-on-white-gm1060392342-283437244

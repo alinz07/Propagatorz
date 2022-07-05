@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useStoreContext } from "../../src/utils/globalState";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_POSTS } from "../utils/queries";
@@ -14,6 +15,11 @@ function SinglePost() {
     const { loading, data } = useQuery(QUERY_ALL_POSTS);
 
     const [currentPost, setCurrentPost] = useState("");
+
+    const [state, dispatch] = useStoreContext();
+
+    const currentUser = state.loggedInUser;
+    console.log(currentUser);
 
     useEffect(() => {
         if (!data) {
@@ -38,7 +44,7 @@ function SinglePost() {
                     justifyContent="center"
                     id="singlepost-container"
                 >
-                    {Auth.loggedIn && (
+                    {Auth.loggedIn && currentUser === currentPost.username && (
                         <Grid item xs={3} id="updateform-container">
                             <UpdateForm postId={currentPost._id} />
                         </Grid>
